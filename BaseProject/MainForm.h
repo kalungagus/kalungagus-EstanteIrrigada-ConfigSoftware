@@ -75,6 +75,7 @@ namespace BaseProject
 	private: System::Windows::Forms::Label^ lblNetConnect;
 	private: System::Windows::Forms::TabControl^ tabCtrlApplication;
 	private: System::Windows::Forms::TabPage^ tabConfig;
+	private: System::Windows::Forms::CheckBox^ cbxSendToRouter;
 
 
 
@@ -83,7 +84,7 @@ namespace BaseProject
 
 
 
-	private: System::Windows::Forms::CheckBox^ cbxActivateWiFi;
+
 	private: System::Windows::Forms::GroupBox^ gbxEcho;
 	private: System::Windows::Forms::Label^ lblEcho;
 	private: System::Windows::Forms::TextBox^ txtSendMessage;
@@ -198,12 +199,12 @@ private: System::Windows::Forms::TextBox^ txtMinThreshold2;
 private: System::Windows::Forms::Label^ lblMinThreshold2;
 
 
-private: System::Windows::Forms::GroupBox^ gbxAlarmFrequency;
-private: System::Windows::Forms::Button^ btnSaveAlarmFrequency;
-private: System::Windows::Forms::Button^ btnGetAlarmFrequency;
-private: System::Windows::Forms::ComboBox^ cmbxAlarmFrequency;
 
-private: System::Windows::Forms::Label^ lblAlarmFrequency;
+
+
+
+
+
 private: System::Windows::Forms::Button^ btnEnterPowerDown;
 private: System::Windows::Forms::Button^ btnSaveConfigs;
 private: System::Windows::Forms::ComboBox^ cmbxControl1Operation;
@@ -255,13 +256,13 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->dlgSaveCSV = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->tabComm = (gcnew System::Windows::Forms::TabPage());
 			this->gbxEcho = (gcnew System::Windows::Forms::GroupBox());
+			this->cbxSendToRouter = (gcnew System::Windows::Forms::CheckBox());
 			this->lblEcho = (gcnew System::Windows::Forms::Label());
 			this->txtSendMessage = (gcnew System::Windows::Forms::TextBox());
 			this->btnSendEcho = (gcnew System::Windows::Forms::Button());
 			this->txtMessages = (gcnew System::Windows::Forms::TextBox());
 			this->btnTxtClear = (gcnew System::Windows::Forms::Button());
 			this->gbxSerialConnection = (gcnew System::Windows::Forms::GroupBox());
-			this->cbxActivateWiFi = (gcnew System::Windows::Forms::CheckBox());
 			this->cmboxSerialPorts = (gcnew System::Windows::Forms::ComboBox());
 			this->btnConnect = (gcnew System::Windows::Forms::Button());
 			this->gbxNetConnect = (gcnew System::Windows::Forms::GroupBox());
@@ -283,11 +284,6 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->cbxHaltPowerDown = (gcnew System::Windows::Forms::CheckBox());
 			this->btnEnterPowerDown = (gcnew System::Windows::Forms::Button());
 			this->btnSaveConfigs = (gcnew System::Windows::Forms::Button());
-			this->gbxAlarmFrequency = (gcnew System::Windows::Forms::GroupBox());
-			this->btnSaveAlarmFrequency = (gcnew System::Windows::Forms::Button());
-			this->btnGetAlarmFrequency = (gcnew System::Windows::Forms::Button());
-			this->cmbxAlarmFrequency = (gcnew System::Windows::Forms::ComboBox());
-			this->lblAlarmFrequency = (gcnew System::Windows::Forms::Label());
 			this->gbxSensor6 = (gcnew System::Windows::Forms::GroupBox());
 			this->cmbxControl6Operation = (gcnew System::Windows::Forms::ComboBox());
 			this->btnSendSensor6Config = (gcnew System::Windows::Forms::Button());
@@ -356,7 +352,6 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->tabCtrlApplication->SuspendLayout();
 			this->tabConfig->SuspendLayout();
 			this->gbxServerMode->SuspendLayout();
-			this->gbxAlarmFrequency->SuspendLayout();
 			this->gbxSensor6->SuspendLayout();
 			this->gbxSensor5->SuspendLayout();
 			this->gbxSensor4->SuspendLayout();
@@ -417,15 +412,26 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// 
 			// gbxEcho
 			// 
+			this->gbxEcho->Controls->Add(this->cbxSendToRouter);
 			this->gbxEcho->Controls->Add(this->lblEcho);
 			this->gbxEcho->Controls->Add(this->txtSendMessage);
 			this->gbxEcho->Controls->Add(this->btnSendEcho);
 			this->gbxEcho->Location = System::Drawing::Point(7, 166);
 			this->gbxEcho->Name = L"gbxEcho";
-			this->gbxEcho->Size = System::Drawing::Size(896, 71);
+			this->gbxEcho->Size = System::Drawing::Size(896, 98);
 			this->gbxEcho->TabIndex = 31;
 			this->gbxEcho->TabStop = false;
 			this->gbxEcho->Text = L"Ecoar mensagem";
+			// 
+			// cbxSendToRouter
+			// 
+			this->cbxSendToRouter->AutoSize = true;
+			this->cbxSendToRouter->Location = System::Drawing::Point(11, 65);
+			this->cbxSendToRouter->Name = L"cbxSendToRouter";
+			this->cbxSendToRouter->Size = System::Drawing::Size(163, 20);
+			this->cbxSendToRouter->TabIndex = 2;
+			this->cbxSendToRouter->Text = L"Enviar para o roteador";
+			this->cbxSendToRouter->UseVisualStyleBackColor = true;
 			// 
 			// lblEcho
 			// 
@@ -447,7 +453,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->txtSendMessage->Enabled = false;
 			this->txtSendMessage->Location = System::Drawing::Point(119, 25);
 			this->txtSendMessage->Margin = System::Windows::Forms::Padding(4);
-			this->txtSendMessage->MaxLength = 46;
+			this->txtSendMessage->MaxLength = 44;
 			this->txtSendMessage->Name = L"txtSendMessage";
 			this->txtSendMessage->Size = System::Drawing::Size(659, 22);
 			this->txtSendMessage->TabIndex = 3;
@@ -471,12 +477,12 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->txtMessages->Enabled = false;
-			this->txtMessages->Location = System::Drawing::Point(9, 244);
+			this->txtMessages->Location = System::Drawing::Point(9, 271);
 			this->txtMessages->Margin = System::Windows::Forms::Padding(4);
 			this->txtMessages->Multiline = true;
 			this->txtMessages->Name = L"txtMessages";
 			this->txtMessages->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			this->txtMessages->Size = System::Drawing::Size(895, 324);
+			this->txtMessages->Size = System::Drawing::Size(895, 297);
 			this->txtMessages->TabIndex = 13;
 			// 
 			// btnTxtClear
@@ -493,7 +499,6 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// 
 			// gbxSerialConnection
 			// 
-			this->gbxSerialConnection->Controls->Add(this->cbxActivateWiFi);
 			this->gbxSerialConnection->Controls->Add(this->cmboxSerialPorts);
 			this->gbxSerialConnection->Controls->Add(this->btnConnect);
 			this->gbxSerialConnection->Location = System::Drawing::Point(7, 7);
@@ -502,16 +507,6 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxSerialConnection->TabIndex = 25;
 			this->gbxSerialConnection->TabStop = false;
 			this->gbxSerialConnection->Text = L"Conexão com a placa por USB";
-			// 
-			// cbxActivateWiFi
-			// 
-			this->cbxActivateWiFi->AutoSize = true;
-			this->cbxActivateWiFi->Location = System::Drawing::Point(618, 34);
-			this->cbxActivateWiFi->Name = L"cbxActivateWiFi";
-			this->cbxActivateWiFi->Size = System::Drawing::Size(56, 20);
-			this->cbxActivateWiFi->TabIndex = 2;
-			this->cbxActivateWiFi->Text = L"WiFi";
-			this->cbxActivateWiFi->UseVisualStyleBackColor = true;
 			// 
 			// cmboxSerialPorts
 			// 
@@ -684,7 +679,6 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->tabConfig->Controls->Add(this->gbxServerMode);
 			this->tabConfig->Controls->Add(this->btnEnterPowerDown);
 			this->tabConfig->Controls->Add(this->btnSaveConfigs);
-			this->tabConfig->Controls->Add(this->gbxAlarmFrequency);
 			this->tabConfig->Controls->Add(this->gbxSensor6);
 			this->tabConfig->Controls->Add(this->gbxSensor5);
 			this->tabConfig->Controls->Add(this->gbxSensor4);
@@ -718,6 +712,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->cbxHaltPowerDown->TabIndex = 0;
 			this->cbxHaltPowerDown->Text = L"Manter módulo ligado para configurações";
 			this->cbxHaltPowerDown->UseVisualStyleBackColor = true;
+			this->cbxHaltPowerDown->CheckedChanged += gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
 			// 
 			// btnEnterPowerDown
 			// 
@@ -738,60 +733,6 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->btnSaveConfigs->Text = L"Salvar configurações";
 			this->btnSaveConfigs->UseVisualStyleBackColor = true;
 			this->btnSaveConfigs->Click += gcnew System::EventHandler(this, &MainForm::btnSaveConfigs_Click);
-			// 
-			// gbxAlarmFrequency
-			// 
-			this->gbxAlarmFrequency->Controls->Add(this->btnSaveAlarmFrequency);
-			this->gbxAlarmFrequency->Controls->Add(this->btnGetAlarmFrequency);
-			this->gbxAlarmFrequency->Controls->Add(this->cmbxAlarmFrequency);
-			this->gbxAlarmFrequency->Controls->Add(this->lblAlarmFrequency);
-			this->gbxAlarmFrequency->Location = System::Drawing::Point(8, 488);
-			this->gbxAlarmFrequency->Name = L"gbxAlarmFrequency";
-			this->gbxAlarmFrequency->Size = System::Drawing::Size(896, 79);
-			this->gbxAlarmFrequency->TabIndex = 11;
-			this->gbxAlarmFrequency->TabStop = false;
-			this->gbxAlarmFrequency->Text = L"Frequência de alarme";
-			// 
-			// btnSaveAlarmFrequency
-			// 
-			this->btnSaveAlarmFrequency->Location = System::Drawing::Point(460, 30);
-			this->btnSaveAlarmFrequency->Name = L"btnSaveAlarmFrequency";
-			this->btnSaveAlarmFrequency->Size = System::Drawing::Size(109, 23);
-			this->btnSaveAlarmFrequency->TabIndex = 3;
-			this->btnSaveAlarmFrequency->Text = L"Salvar valor";
-			this->btnSaveAlarmFrequency->UseVisualStyleBackColor = true;
-			this->btnSaveAlarmFrequency->Click += gcnew System::EventHandler(this, &MainForm::btnSaveAlarmFrequency_Click);
-			// 
-			// btnGetAlarmFrequency
-			// 
-			this->btnGetAlarmFrequency->Location = System::Drawing::Point(368, 30);
-			this->btnGetAlarmFrequency->Name = L"btnGetAlarmFrequency";
-			this->btnGetAlarmFrequency->Size = System::Drawing::Size(86, 23);
-			this->btnGetAlarmFrequency->TabIndex = 2;
-			this->btnGetAlarmFrequency->Text = L"Ler valor";
-			this->btnGetAlarmFrequency->UseVisualStyleBackColor = true;
-			this->btnGetAlarmFrequency->Click += gcnew System::EventHandler(this, &MainForm::btnGetAlarmFrequency_Click);
-			// 
-			// cmbxAlarmFrequency
-			// 
-			this->cmbxAlarmFrequency->FormattingEnabled = true;
-			this->cmbxAlarmFrequency->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				L"A cada 10 segundos", L"A cada minuto",
-					L"A cada 10 minutos", L"A cada hora", L"Uma vez ao dia"
-			});
-			this->cmbxAlarmFrequency->Location = System::Drawing::Point(104, 30);
-			this->cmbxAlarmFrequency->Name = L"cmbxAlarmFrequency";
-			this->cmbxAlarmFrequency->Size = System::Drawing::Size(255, 24);
-			this->cmbxAlarmFrequency->TabIndex = 1;
-			// 
-			// lblAlarmFrequency
-			// 
-			this->lblAlarmFrequency->AutoSize = true;
-			this->lblAlarmFrequency->Location = System::Drawing::Point(17, 33);
-			this->lblAlarmFrequency->Name = L"lblAlarmFrequency";
-			this->lblAlarmFrequency->Size = System::Drawing::Size(74, 16);
-			this->lblAlarmFrequency->TabIndex = 0;
-			this->lblAlarmFrequency->Text = L"Valor atual:";
 			// 
 			// gbxSensor6
 			// 
@@ -1419,15 +1360,12 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxEcho->ResumeLayout(false);
 			this->gbxEcho->PerformLayout();
 			this->gbxSerialConnection->ResumeLayout(false);
-			this->gbxSerialConnection->PerformLayout();
 			this->gbxNetConnect->ResumeLayout(false);
 			this->gbxNetConnect->PerformLayout();
 			this->tabCtrlApplication->ResumeLayout(false);
 			this->tabConfig->ResumeLayout(false);
 			this->gbxServerMode->ResumeLayout(false);
 			this->gbxServerMode->PerformLayout();
-			this->gbxAlarmFrequency->ResumeLayout(false);
-			this->gbxAlarmFrequency->PerformLayout();
 			this->gbxSensor6->ResumeLayout(false);
 			this->gbxSensor6->PerformLayout();
 			this->gbxSensor5->ResumeLayout(false);
@@ -1460,7 +1398,6 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 				loadTxtIfConfigExists(txtIP3);
 				loadTxtIfConfigExists(txtIP4);
 				loadTxtIfConfigExists(txtPort);
-				cmbxAlarmFrequency->SelectedIndex = 0;
 
 				cmbxControl1Operation->SelectedIndex = 0;
 				cmbxControl2Operation->SelectedIndex = 0;
@@ -1639,27 +1576,28 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 
 			void setInterfaceState(void)
 			{
-				bool deviceState = (device != nullptr && device->Connected) ? true : false;
-				bool tcpDeviceState = (tcpDevice != nullptr && tcpDevice->Connected) ? true : false;
+				bool usbConnected = (device != nullptr && device->Connected) ? true : false;
+				bool tcpConnected = (tcpDevice != nullptr && tcpDevice->Connected) ? true : false;
+				bool deviceConnected = (usbConnected || tcpConnected);
 
-				if (deviceState || tcpDeviceState)
-				{
-					lblEcho->Enabled = true;
-					txtSendMessage->Enabled = true;
-					btnSendEcho->Enabled = true;
-					txtMessages->Enabled = true;
-					btnTxtClear->Enabled = true;
-				}
-				else
-				{
-					lblEcho->Enabled = false;
-					txtSendMessage->Enabled = false;
-					btnSendEcho->Enabled = false;
-					txtMessages->Enabled = false;
-					btnTxtClear->Enabled = false;
-				}
+				lblEcho->Enabled = deviceConnected;
+				txtSendMessage->Enabled = deviceConnected;
+				btnSendEcho->Enabled = deviceConnected;
+				txtMessages->Enabled = deviceConnected;
+				btnTxtClear->Enabled = deviceConnected;
+				gbxEcho->Enabled = deviceConnected;
+				gbxServerMode->Enabled = deviceConnected;
+				gbxRTC->Enabled = deviceConnected;
+				gbxSensor1->Enabled = deviceConnected;
+				gbxSensor2->Enabled = deviceConnected;
+				gbxSensor3->Enabled = deviceConnected;
+				gbxSensor4->Enabled = deviceConnected;
+				gbxSensor5->Enabled = deviceConnected;
+				gbxSensor6->Enabled = deviceConnected;
+				btnSaveConfigs->Enabled = deviceConnected;
+				btnEnterPowerDown->Enabled = deviceConnected;
 
-				if (deviceState)
+				if (usbConnected)
 				{
 					btnConnect->Text = "Desconectar";
 					stLabelConnection->Text = "USB: Conectado";
@@ -1672,7 +1610,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					cmboxSerialPorts->Enabled = true;
 				}
 
-				if (tcpDeviceState)
+				if (tcpConnected)
 				{
 					btnNetConnect->Text = "Desconectar";
 					stLabelNetConnection->Text = "Net: Conectado";
@@ -1874,7 +1812,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 
 			Module^ getValidDevice(void)
 			{
-				Module^ priorityDevice;
+				Module^ priorityDevice = nullptr;
 
 				if (device != nullptr && device->Connected)
 					priorityDevice = device;
@@ -1894,25 +1832,30 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 				}
 				else
 				{
-					switch (buffer[0])
+					switch (buffer[0] & COMMAND_MASK)
 					{
 						case CMD_MESSAGE:
 							txtMessages->Text += Encoding::ASCII->GetString(buffer, 1, buffer->Length - 1);
 							break;
-						case CMD_MESSAGE_ECHO:
-							txtMessages->Text += Encoding::ASCII->GetString(buffer, 1, buffer->Length - 1);
-							txtMessages->Text += "\r\n";
-							break;
 						case CMD_GET_DATETIME:
-							lblModuleDateTime->Text = String::Format("Data/Hora do módulo: {0:D02}/{1:D02}/{2} {3:D02}:{4:D02}:{5:D02}",
-								bcdToInt(buffer[3]), bcdToInt(buffer[4]), 2000 + bcdToInt(buffer[1]),
-								bcdToInt(buffer[5]), bcdToInt(buffer[8]), bcdToInt(buffer[7]));
+							if ((buffer[0] & SOURCE_MASK) == COMMAND_SOURCE_MODULE)
+							{
+								lblModuleDateTime->Text = String::Format("Data/Hora do módulo: {0:D02}/{1:D02}/{2} {3:D02}:{4:D02}:{5:D02}",
+									bcdToInt(buffer[3]), bcdToInt(buffer[4]), 2000 + bcdToInt(buffer[1]),
+									bcdToInt(buffer[5]), bcdToInt(buffer[8]), bcdToInt(buffer[7]));
+							}
+							else if ((buffer[0] & SOURCE_MASK) == COMMAND_SOURCE_ROUTER)
+							{
+								lblModuleDateTime->Text = String::Format("Data/Hora do roteador: {0:D02}/{1:D02}/{2} {3:D02}:{4:D02}:{5:D02}",
+									bcdToInt(buffer[3]), bcdToInt(buffer[4]), 2000 + bcdToInt(buffer[1]),
+									bcdToInt(buffer[5]), bcdToInt(buffer[8]), bcdToInt(buffer[7]));
+							}
 							break;
 						case CMD_SET_DATETIME:
 							if(buffer[1] == 0x06)
 								MessageBox::Show("Data/Hora atualizada.", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 							break;
-						case CMD_GET_SAMPLES:
+						case CMD_SEND_SAMPLES:
 							lblLastSampleInstant->Text = String::Format("Última amostra: {0:D02}/{1:D02}/{2} {3:D02}:{4:D02}:{5:D02}",
 								bcdToInt(buffer[3]), bcdToInt(buffer[4]), 2000 + bcdToInt(buffer[1]),
 								bcdToInt(buffer[5]), bcdToInt(buffer[8]), bcdToInt(buffer[7]));
@@ -1964,26 +1907,11 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 							if (buffer[1] == 0x06)
 								MessageBox::Show("Configuração atualizada", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 							break;
-						case CMD_GET_ALARM_FREQUENCY:
-							cmbxAlarmFrequency->SelectedIndex = buffer[1] - 2;
-							break;
-						case CMD_SET_ALARM_FREQUENCY:
-							if (buffer[1] == 0x06)
-								MessageBox::Show("Alarme definido!", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
-							else
-								MessageBox::Show("Alarme não pôde ser definido.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Error);
-							break;
 						case CMD_SAVE_CONFIG:
 							if (buffer[1] == 0x06)
 								MessageBox::Show("Configurações salvas!", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 							else
 								MessageBox::Show("Configurações não puderam ser salvas.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Error);
-							break;
-						case CMD_REQUEST_MESSAGE:
-							if (cbxHaltPowerDown->Checked)
-								haltPowerDown();
-							else
-								setModuleInPowerDown();
 							break;
 						case CMD_POWER_DOWN:
 							if (requestPowerDownVisualAnswer && buffer[1] == 0x06)
@@ -1992,12 +1920,9 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 								requestPowerDownVisualAnswer = false;
 							}
 							break;
-						case CMD_HALT_TIMEOUT:
+						case CMD_SET_TIMEOUT:
 							if (buffer[1] == 0x06)
-							{
-								cbxHaltPowerDown->Checked = false;
-								MessageBox::Show("Módulo pronto para receber comandos.", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
-							}
+								MessageBox::Show("Comando de alteração de timeout enviado.", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 							break;
 						default:
 							break;
@@ -2011,18 +1936,22 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 
 				if (priorityDevice != nullptr && priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(txtSendMessage->Text->Length + 4);
+					array<unsigned char>^ buffer = gcnew array<unsigned char>(txtSendMessage->Text->Length + 6);
 					array<unsigned char>^ message = Encoding::ASCII->GetBytes(txtSendMessage->Text);
+					int index;
 
 					buffer[0] = 0xAA;
 					buffer[1] = 0x55;
 					// Tamanho do campo de dados
-					buffer[2] = safe_cast<unsigned char>(txtSendMessage->Text->Length + 1);
+					buffer[2] = safe_cast<unsigned char>(txtSendMessage->Text->Length + 3);
 					// Comando
-					buffer[3] = CMD_MESSAGE_ECHO;
+					buffer[3] = ((cbxSendToRouter->Checked) ? ROUTER_COMMAND : ENDPOINT_COMMAND) | COMMAND_SOURCE_SOFTWARE | CMD_MESSAGE;
 					// Texto para envio
-					for (int i = 0; i < message->Length; i++)
-						buffer[4 + i] = message[i];
+					for (index = 0; index < message->Length; index++)
+						buffer[4 + index] = message[index];
+
+					buffer[4 + index++] = '\r';
+					buffer[4 + index++] = '\n';
 
 					try
 					{
@@ -2048,7 +1977,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					// Tamanho do campo de dados
 					buffer[2] = 1;
 					// Comando
-					buffer[3] = CMD_GET_DATETIME;
+					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_GET_DATETIME;
 					
 					try
 					{
@@ -2058,6 +1987,10 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					{
 						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 					}
+				}
+				else
+				{
+					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 			System::Void btnUpdateDateTime_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -2074,7 +2007,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					// Tamanho do campo de dados
 					buffer[2] = 9;
 					// Comando
-					buffer[3] = CMD_SET_DATETIME;
+					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_DATETIME;
 					buffer[4] = intToBcd(horaAtual.Year - 2000);
 					buffer[5] = 0;
 					buffer[6] = intToBcd(horaAtual.Day);
@@ -2093,6 +2026,10 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 					}
 				}
+				else
+				{
+					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+				}
 			}
 
 			void getSensorConfig(uint8_t sensorID)
@@ -2109,7 +2046,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					// Tamanho do campo de dados
 					buffer[2] = 2;
 					// Comando
-					buffer[3] = CMD_GET_CONTROL_CONFIG;
+					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_GET_CONTROL_CONFIG;
 					buffer[4] = sensorID;
 
 					try
@@ -2120,6 +2057,10 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					{
 						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 					}
+				}
+				else
+				{
+					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 			System::Void btnReadSensor1Config_Click(System::Object^ sender, System::EventArgs^ e) 
@@ -2174,7 +2115,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					// Tamanho do campo de dados
 					buffer[2] = 7;
 					// Comando
-					buffer[3] = CMD_SET_CONTROL_CONFIG;
+					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_CONTROL_CONFIG;
 					buffer[4] = sensorID;
 					buffer[5] = controlOperation->SelectedIndex;
 					tempByteArray = BitConverter::GetBytes(minThreshold);
@@ -2192,6 +2133,10 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					{
 						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 					}
+				}
+				else
+				{
+					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 
@@ -2219,59 +2164,6 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			{
 				setSensorConfig(5, cmbxControl6Operation, txtMinThreshold6, txtMaxThreshold6);
 			}
-			System::Void btnGetAlarmFrequency_Click(System::Object^ sender, System::EventArgs^ e) 
-			{
-				Module^ priorityDevice = getValidDevice();
-
-				if (priorityDevice != nullptr && priorityDevice->Connected)
-				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(4);
-					DateTime horaAtual = DateTime::Now;
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 1;
-					// Comando
-					buffer[3] = CMD_GET_ALARM_FREQUENCY;
-
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
-				}
-			}
-			System::Void btnSaveAlarmFrequency_Click(System::Object^ sender, System::EventArgs^ e) 
-			{
-				Module^ priorityDevice = getValidDevice();
-
-				if (priorityDevice != nullptr && priorityDevice->Connected)
-				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(5);
-					DateTime horaAtual = DateTime::Now;
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 2;
-					// Comando
-					buffer[3] = CMD_SET_ALARM_FREQUENCY;
-					buffer[4] = 2 + cmbxAlarmFrequency->SelectedIndex;
-
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
-				}
-			}
 			System::Void btnSaveConfigs_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				Module^ priorityDevice = getValidDevice();
@@ -2286,7 +2178,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					// Tamanho do campo de dados
 					buffer[2] = 1;
 					// Comando
-					buffer[3] = CMD_SAVE_CONFIG;
+					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SAVE_CONFIG;
 
 					try
 					{
@@ -2296,6 +2188,10 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					{
 						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 					}
+				}
+				else
+				{
+					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 
@@ -2313,7 +2209,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					// Tamanho do campo de dados
 					buffer[2] = 1;
 					// Comando
-					buffer[3] = CMD_POWER_DOWN;
+					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_POWER_DOWN;
 
 					try
 					{
@@ -2323,6 +2219,10 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					{
 						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 					}
+				}
+				else
+				{
+					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 
@@ -2331,20 +2231,21 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 				requestPowerDownVisualAnswer = true;
 				setModuleInPowerDown();
 			}
-			void haltPowerDown(void)
+			void setPowerDown(uint8_t val)
 			{
 				Module^ priorityDevice = getValidDevice();
 
 				if (priorityDevice != nullptr && priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(4);
+					array<unsigned char>^ buffer = gcnew array<unsigned char>(5);
 
 					buffer[0] = 0xAA;
 					buffer[1] = 0x55;
 					// Tamanho do campo de dados
-					buffer[2] = 1;
+					buffer[2] = 2;
 					// Comando
-					buffer[3] = CMD_HALT_TIMEOUT;
+					buffer[3] = ROUTER_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_TIMEOUT;
+					buffer[4] = val;
 
 					try
 					{
@@ -2355,6 +2256,17 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 					}
 				}
+				else
+				{
+					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					this->cbxHaltPowerDown->CheckedChanged -= gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
+					cbxHaltPowerDown->Checked = false;
+					this->cbxHaltPowerDown->CheckedChanged += gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
+				}
+			}
+			System::Void cbxHaltPowerDown_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
+			{
+				setPowerDown((cbxHaltPowerDown->Checked) ? 1 : 0);
 			}
 };
 }
