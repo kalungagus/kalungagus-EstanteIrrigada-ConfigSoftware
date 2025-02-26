@@ -760,7 +760,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			});
 			this->cmbxControl6Operation->Location = System::Drawing::Point(6, 17);
 			this->cmbxControl6Operation->Name = L"cmbxControl6Operation";
-			this->cmbxControl6Operation->Size = System::Drawing::Size(185, 24);
+			this->cmbxControl6Operation->Size = System::Drawing::Size(262, 24);
 			this->cmbxControl6Operation->TabIndex = 8;
 			// 
 			// btnSendSensor6Config
@@ -793,15 +793,15 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMaxThreshold6
 			// 
 			this->lblMaxThreshold6->AutoSize = true;
-			this->lblMaxThreshold6->Location = System::Drawing::Point(436, 20);
+			this->lblMaxThreshold6->Location = System::Drawing::Point(476, 20);
 			this->lblMaxThreshold6->Name = L"lblMaxThreshold6";
-			this->lblMaxThreshold6->Size = System::Drawing::Size(155, 16);
+			this->lblMaxThreshold6->Size = System::Drawing::Size(117, 16);
 			this->lblMaxThreshold6->TabIndex = 3;
-			this->lblMaxThreshold6->Text = L"Limite superior de leitura:";
+			this->lblMaxThreshold6->Text = L"Limite superior (V):";
 			// 
 			// txtMinThreshold6
 			// 
-			this->txtMinThreshold6->Location = System::Drawing::Point(350, 17);
+			this->txtMinThreshold6->Location = System::Drawing::Point(388, 17);
 			this->txtMinThreshold6->Name = L"txtMinThreshold6";
 			this->txtMinThreshold6->Size = System::Drawing::Size(80, 22);
 			this->txtMinThreshold6->TabIndex = 2;
@@ -809,11 +809,11 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMinThreshold6
 			// 
 			this->lblMinThreshold6->AutoSize = true;
-			this->lblMinThreshold6->Location = System::Drawing::Point(198, 20);
+			this->lblMinThreshold6->Location = System::Drawing::Point(275, 20);
 			this->lblMinThreshold6->Name = L"lblMinThreshold6";
-			this->lblMinThreshold6->Size = System::Drawing::Size(146, 16);
+			this->lblMinThreshold6->Size = System::Drawing::Size(105, 16);
 			this->lblMinThreshold6->TabIndex = 1;
-			this->lblMinThreshold6->Text = L"Limite inferior de leitura:";
+			this->lblMinThreshold6->Text = L"Limite inferior (V)";
 			// 
 			// gbxSensor5
 			// 
@@ -841,7 +841,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			});
 			this->cmbxControl5Operation->Location = System::Drawing::Point(6, 17);
 			this->cmbxControl5Operation->Name = L"cmbxControl5Operation";
-			this->cmbxControl5Operation->Size = System::Drawing::Size(185, 24);
+			this->cmbxControl5Operation->Size = System::Drawing::Size(262, 24);
 			this->cmbxControl5Operation->TabIndex = 8;
 			// 
 			// btnSendSensor5Config
@@ -874,15 +874,15 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMaxThreshold5
 			// 
 			this->lblMaxThreshold5->AutoSize = true;
-			this->lblMaxThreshold5->Location = System::Drawing::Point(436, 20);
+			this->lblMaxThreshold5->Location = System::Drawing::Point(476, 20);
 			this->lblMaxThreshold5->Name = L"lblMaxThreshold5";
-			this->lblMaxThreshold5->Size = System::Drawing::Size(155, 16);
+			this->lblMaxThreshold5->Size = System::Drawing::Size(117, 16);
 			this->lblMaxThreshold5->TabIndex = 3;
-			this->lblMaxThreshold5->Text = L"Limite superior de leitura:";
+			this->lblMaxThreshold5->Text = L"Limite superior (V):";
 			// 
 			// txtMinThreshold5
 			// 
-			this->txtMinThreshold5->Location = System::Drawing::Point(350, 17);
+			this->txtMinThreshold5->Location = System::Drawing::Point(388, 17);
 			this->txtMinThreshold5->Name = L"txtMinThreshold5";
 			this->txtMinThreshold5->Size = System::Drawing::Size(80, 22);
 			this->txtMinThreshold5->TabIndex = 2;
@@ -890,11 +890,11 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMinThreshold5
 			// 
 			this->lblMinThreshold5->AutoSize = true;
-			this->lblMinThreshold5->Location = System::Drawing::Point(198, 20);
+			this->lblMinThreshold5->Location = System::Drawing::Point(275, 20);
 			this->lblMinThreshold5->Name = L"lblMinThreshold5";
-			this->lblMinThreshold5->Size = System::Drawing::Size(146, 16);
+			this->lblMinThreshold5->Size = System::Drawing::Size(105, 16);
 			this->lblMinThreshold5->TabIndex = 1;
-			this->lblMinThreshold5->Text = L"Limite inferior de leitura:";
+			this->lblMinThreshold5->Text = L"Limite inferior (V)";
 			// 
 			// gbxSensor4
 			// 
@@ -922,7 +922,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			});
 			this->cmbxControl4Operation->Location = System::Drawing::Point(6, 19);
 			this->cmbxControl4Operation->Name = L"cmbxControl4Operation";
-			this->cmbxControl4Operation->Size = System::Drawing::Size(185, 24);
+			this->cmbxControl4Operation->Size = System::Drawing::Size(262, 24);
 			this->cmbxControl4Operation->TabIndex = 8;
 			// 
 			// btnSendSensor4Config
@@ -955,15 +955,15 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMaxThreshold4
 			// 
 			this->lblMaxThreshold4->AutoSize = true;
-			this->lblMaxThreshold4->Location = System::Drawing::Point(436, 20);
+			this->lblMaxThreshold4->Location = System::Drawing::Point(476, 20);
 			this->lblMaxThreshold4->Name = L"lblMaxThreshold4";
-			this->lblMaxThreshold4->Size = System::Drawing::Size(155, 16);
+			this->lblMaxThreshold4->Size = System::Drawing::Size(117, 16);
 			this->lblMaxThreshold4->TabIndex = 3;
-			this->lblMaxThreshold4->Text = L"Limite superior de leitura:";
+			this->lblMaxThreshold4->Text = L"Limite superior (V):";
 			// 
 			// txtMinThreshold4
 			// 
-			this->txtMinThreshold4->Location = System::Drawing::Point(350, 17);
+			this->txtMinThreshold4->Location = System::Drawing::Point(388, 17);
 			this->txtMinThreshold4->Name = L"txtMinThreshold4";
 			this->txtMinThreshold4->Size = System::Drawing::Size(80, 22);
 			this->txtMinThreshold4->TabIndex = 2;
@@ -971,11 +971,11 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMinThreshold4
 			// 
 			this->lblMinThreshold4->AutoSize = true;
-			this->lblMinThreshold4->Location = System::Drawing::Point(198, 20);
+			this->lblMinThreshold4->Location = System::Drawing::Point(275, 20);
 			this->lblMinThreshold4->Name = L"lblMinThreshold4";
-			this->lblMinThreshold4->Size = System::Drawing::Size(146, 16);
+			this->lblMinThreshold4->Size = System::Drawing::Size(105, 16);
 			this->lblMinThreshold4->TabIndex = 1;
-			this->lblMinThreshold4->Text = L"Limite inferior de leitura:";
+			this->lblMinThreshold4->Text = L"Limite inferior (V)";
 			// 
 			// gbxSensor3
 			// 
@@ -1003,7 +1003,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			});
 			this->cmbxControl3Operation->Location = System::Drawing::Point(6, 18);
 			this->cmbxControl3Operation->Name = L"cmbxControl3Operation";
-			this->cmbxControl3Operation->Size = System::Drawing::Size(185, 24);
+			this->cmbxControl3Operation->Size = System::Drawing::Size(262, 24);
 			this->cmbxControl3Operation->TabIndex = 8;
 			// 
 			// btnSendSensor3Config
@@ -1036,15 +1036,15 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMaxThreshold3
 			// 
 			this->lblMaxThreshold3->AutoSize = true;
-			this->lblMaxThreshold3->Location = System::Drawing::Point(436, 20);
+			this->lblMaxThreshold3->Location = System::Drawing::Point(476, 20);
 			this->lblMaxThreshold3->Name = L"lblMaxThreshold3";
-			this->lblMaxThreshold3->Size = System::Drawing::Size(155, 16);
+			this->lblMaxThreshold3->Size = System::Drawing::Size(117, 16);
 			this->lblMaxThreshold3->TabIndex = 3;
-			this->lblMaxThreshold3->Text = L"Limite superior de leitura:";
+			this->lblMaxThreshold3->Text = L"Limite superior (V):";
 			// 
 			// txtMinThreshold3
 			// 
-			this->txtMinThreshold3->Location = System::Drawing::Point(350, 17);
+			this->txtMinThreshold3->Location = System::Drawing::Point(388, 17);
 			this->txtMinThreshold3->Name = L"txtMinThreshold3";
 			this->txtMinThreshold3->Size = System::Drawing::Size(80, 22);
 			this->txtMinThreshold3->TabIndex = 2;
@@ -1052,11 +1052,11 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMinThreshold3
 			// 
 			this->lblMinThreshold3->AutoSize = true;
-			this->lblMinThreshold3->Location = System::Drawing::Point(197, 20);
+			this->lblMinThreshold3->Location = System::Drawing::Point(274, 20);
 			this->lblMinThreshold3->Name = L"lblMinThreshold3";
-			this->lblMinThreshold3->Size = System::Drawing::Size(146, 16);
+			this->lblMinThreshold3->Size = System::Drawing::Size(105, 16);
 			this->lblMinThreshold3->TabIndex = 1;
-			this->lblMinThreshold3->Text = L"Limite inferior de leitura:";
+			this->lblMinThreshold3->Text = L"Limite inferior (V)";
 			// 
 			// gbxSensor2
 			// 
@@ -1084,7 +1084,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			});
 			this->cmbxControl2Operation->Location = System::Drawing::Point(6, 19);
 			this->cmbxControl2Operation->Name = L"cmbxControl2Operation";
-			this->cmbxControl2Operation->Size = System::Drawing::Size(185, 24);
+			this->cmbxControl2Operation->Size = System::Drawing::Size(262, 24);
 			this->cmbxControl2Operation->TabIndex = 8;
 			// 
 			// btnSendSensor2Config
@@ -1117,15 +1117,15 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMaxThreshold2
 			// 
 			this->lblMaxThreshold2->AutoSize = true;
-			this->lblMaxThreshold2->Location = System::Drawing::Point(435, 22);
+			this->lblMaxThreshold2->Location = System::Drawing::Point(475, 22);
 			this->lblMaxThreshold2->Name = L"lblMaxThreshold2";
-			this->lblMaxThreshold2->Size = System::Drawing::Size(155, 16);
+			this->lblMaxThreshold2->Size = System::Drawing::Size(117, 16);
 			this->lblMaxThreshold2->TabIndex = 3;
-			this->lblMaxThreshold2->Text = L"Limite superior de leitura:";
+			this->lblMaxThreshold2->Text = L"Limite superior (V):";
 			// 
 			// txtMinThreshold2
 			// 
-			this->txtMinThreshold2->Location = System::Drawing::Point(349, 19);
+			this->txtMinThreshold2->Location = System::Drawing::Point(387, 19);
 			this->txtMinThreshold2->Name = L"txtMinThreshold2";
 			this->txtMinThreshold2->Size = System::Drawing::Size(80, 22);
 			this->txtMinThreshold2->TabIndex = 2;
@@ -1133,11 +1133,11 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMinThreshold2
 			// 
 			this->lblMinThreshold2->AutoSize = true;
-			this->lblMinThreshold2->Location = System::Drawing::Point(197, 20);
+			this->lblMinThreshold2->Location = System::Drawing::Point(274, 20);
 			this->lblMinThreshold2->Name = L"lblMinThreshold2";
-			this->lblMinThreshold2->Size = System::Drawing::Size(146, 16);
+			this->lblMinThreshold2->Size = System::Drawing::Size(105, 16);
 			this->lblMinThreshold2->TabIndex = 1;
-			this->lblMinThreshold2->Text = L"Limite inferior de leitura:";
+			this->lblMinThreshold2->Text = L"Limite inferior (V)";
 			// 
 			// gbxSensor1
 			// 
@@ -1165,7 +1165,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			});
 			this->cmbxControl1Operation->Location = System::Drawing::Point(6, 19);
 			this->cmbxControl1Operation->Name = L"cmbxControl1Operation";
-			this->cmbxControl1Operation->Size = System::Drawing::Size(185, 24);
+			this->cmbxControl1Operation->Size = System::Drawing::Size(262, 24);
 			this->cmbxControl1Operation->TabIndex = 7;
 			// 
 			// btnSendSensor1Config
@@ -1198,15 +1198,15 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMaxThreshold1
 			// 
 			this->lblMaxThreshold1->AutoSize = true;
-			this->lblMaxThreshold1->Location = System::Drawing::Point(435, 20);
+			this->lblMaxThreshold1->Location = System::Drawing::Point(475, 20);
 			this->lblMaxThreshold1->Name = L"lblMaxThreshold1";
-			this->lblMaxThreshold1->Size = System::Drawing::Size(155, 16);
+			this->lblMaxThreshold1->Size = System::Drawing::Size(117, 16);
 			this->lblMaxThreshold1->TabIndex = 3;
-			this->lblMaxThreshold1->Text = L"Limite superior de leitura:";
+			this->lblMaxThreshold1->Text = L"Limite superior (V):";
 			// 
 			// txtMinThreshold1
 			// 
-			this->txtMinThreshold1->Location = System::Drawing::Point(349, 18);
+			this->txtMinThreshold1->Location = System::Drawing::Point(387, 18);
 			this->txtMinThreshold1->Name = L"txtMinThreshold1";
 			this->txtMinThreshold1->Size = System::Drawing::Size(80, 22);
 			this->txtMinThreshold1->TabIndex = 2;
@@ -1214,11 +1214,11 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// lblMinThreshold1
 			// 
 			this->lblMinThreshold1->AutoSize = true;
-			this->lblMinThreshold1->Location = System::Drawing::Point(197, 20);
+			this->lblMinThreshold1->Location = System::Drawing::Point(274, 20);
 			this->lblMinThreshold1->Name = L"lblMinThreshold1";
-			this->lblMinThreshold1->Size = System::Drawing::Size(146, 16);
+			this->lblMinThreshold1->Size = System::Drawing::Size(108, 16);
 			this->lblMinThreshold1->TabIndex = 1;
-			this->lblMinThreshold1->Text = L"Limite inferior de leitura:";
+			this->lblMinThreshold1->Text = L"Limite inferior (V):";
 			// 
 			// gbxRTC
 			// 
@@ -1810,6 +1810,16 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 				return value;
 			}
 
+			float getVoltageFromValue(UInt16 value)
+			{
+				return ((3.3f / 1024.0f) * value);
+			}
+
+			UInt16 getValueFromVoltage(float voltage)
+			{
+				return safe_cast<UInt16>((voltage / 3.3f) * 1024.0f);
+			}
+
 			Module^ getValidDevice(void)
 			{
 				Module^ priorityDevice = nullptr;
@@ -1856,49 +1866,57 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 								MessageBox::Show("Data/Hora atualizada.", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 							break;
 						case CMD_SEND_SAMPLES:
-							lblLastSampleInstant->Text = String::Format("Última amostra: {0:D02}/{1:D02}/{2} {3:D02}:{4:D02}:{5:D02}",
-								bcdToInt(buffer[3]), bcdToInt(buffer[4]), 2000 + bcdToInt(buffer[1]),
-								bcdToInt(buffer[5]), bcdToInt(buffer[8]), bcdToInt(buffer[7]));
-							lblSensor1->Text = String::Format("Sensor 1: {0} [Válvula {1}]", BitConverter::ToUInt16(buffer, 9), buffer[21] ? "ativa" : "desativa");
-							lblSensor2->Text = String::Format("Sensor 2: {0} [Válvula {1}]", BitConverter::ToUInt16(buffer, 11), buffer[22] ? "ativa" : "desativa");
-							lblSensor3->Text = String::Format("Sensor 3: {0} [Válvula {1}]", BitConverter::ToUInt16(buffer, 13), buffer[23] ? "ativa" : "desativa");
-							lblSensor4->Text = String::Format("Sensor 4: {0} [Válvula {1}]", BitConverter::ToUInt16(buffer, 15), buffer[24] ? "ativa" : "desativa");
-							lblSensor5->Text = String::Format("Sensor 5: {0} [Válvula {1}]", BitConverter::ToUInt16(buffer, 17), buffer[25] ? "ativa" : "desativa");
-							lblSensor6->Text = String::Format("Sensor 6: {0} [Válvula {1}]", BitConverter::ToUInt16(buffer, 19), buffer[26] ? "ativa" : "desativa");
-
+							{
+								UInt16 sensor1, sensor2, sensor3, sensor4, sensor5, sensor6;
+								lblLastSampleInstant->Text = String::Format("Última amostra: {0:D02}/{1:D02}/{2} {3:D02}:{4:D02}:{5:D02}",
+									bcdToInt(buffer[3]), bcdToInt(buffer[4]), 2000 + bcdToInt(buffer[1]),
+									bcdToInt(buffer[5]), bcdToInt(buffer[8]), bcdToInt(buffer[7]));
+								sensor1 = BitConverter::ToUInt16(buffer, 9);
+								sensor2 = BitConverter::ToUInt16(buffer, 11);
+								sensor3 = BitConverter::ToUInt16(buffer, 13);
+								sensor4 = BitConverter::ToUInt16(buffer, 15);
+								sensor5 = BitConverter::ToUInt16(buffer, 17);
+								sensor6 = BitConverter::ToUInt16(buffer, 19);
+								lblSensor1->Text = String::Format("Sensor 1: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor1), sensor1, buffer[21] ? "ativa" : "desativa");
+								lblSensor2->Text = String::Format("Sensor 2: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor2), sensor2, buffer[22] ? "ativa" : "desativa");
+								lblSensor3->Text = String::Format("Sensor 3: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor3), sensor3, buffer[23] ? "ativa" : "desativa");
+								lblSensor4->Text = String::Format("Sensor 4: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor4), sensor4, buffer[24] ? "ativa" : "desativa");
+								lblSensor5->Text = String::Format("Sensor 5: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor5), sensor5, buffer[25] ? "ativa" : "desativa");
+								lblSensor6->Text = String::Format("Sensor 6: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor6), sensor6, buffer[26] ? "ativa" : "desativa");
+							}
 							break;
 						case CMD_GET_CONTROL_CONFIG:
 							switch (buffer[1])
 							{
 								case 0:
 									cmbxControl1Operation->SelectedIndex = buffer[2];
-									txtMinThreshold1->Text = BitConverter::ToUInt16(buffer, 3).ToString();
-									txtMaxThreshold1->Text = BitConverter::ToUInt16(buffer, 5).ToString();
+									txtMinThreshold1->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
+									txtMaxThreshold1->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
 									break;
 								case 1:
 									cmbxControl2Operation->SelectedIndex = buffer[2];
-									txtMinThreshold2->Text = BitConverter::ToUInt16(buffer, 3).ToString();
-									txtMaxThreshold2->Text = BitConverter::ToUInt16(buffer, 5).ToString();
+									txtMinThreshold2->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
+									txtMaxThreshold2->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
 									break;
 								case 2:
 									cmbxControl3Operation->SelectedIndex = buffer[2];
-									txtMinThreshold3->Text = BitConverter::ToUInt16(buffer, 3).ToString();
-									txtMaxThreshold3->Text = BitConverter::ToUInt16(buffer, 5).ToString();
+									txtMinThreshold3->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
+									txtMaxThreshold3->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
 									break;
 								case 3:
 									cmbxControl4Operation->SelectedIndex = buffer[2];
-									txtMinThreshold4->Text = BitConverter::ToUInt16(buffer, 3).ToString();
-									txtMaxThreshold4->Text = BitConverter::ToUInt16(buffer, 5).ToString();
+									txtMinThreshold4->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
+									txtMaxThreshold4->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
 									break;
 								case 4:
 									cmbxControl5Operation->SelectedIndex = buffer[2];
-									txtMinThreshold5->Text = BitConverter::ToUInt16(buffer, 3).ToString();
-									txtMaxThreshold5->Text = BitConverter::ToUInt16(buffer, 5).ToString();
+									txtMinThreshold5->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
+									txtMaxThreshold5->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
 									break;
 								case 5:
 									cmbxControl6Operation->SelectedIndex = buffer[2];
-									txtMinThreshold6->Text = BitConverter::ToUInt16(buffer, 3).ToString();
-									txtMaxThreshold6->Text = BitConverter::ToUInt16(buffer, 5).ToString();
+									txtMinThreshold6->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
+									txtMaxThreshold6->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
 									break;
 								default:
 									break;
@@ -1916,6 +1934,9 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 						case CMD_POWER_DOWN:
 							if (requestPowerDownVisualAnswer && buffer[1] == 0x06)
 							{
+								this->cbxHaltPowerDown->CheckedChanged -= gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
+								cbxHaltPowerDown->Checked = false;
+								this->cbxHaltPowerDown->CheckedChanged += gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
 								MessageBox::Show("Módulo operando em modo Power Down.", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 								requestPowerDownVisualAnswer = false;
 							}
@@ -2097,18 +2118,24 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					array<unsigned char>^ buffer = gcnew array<unsigned char>(10);
 					array<unsigned char>^ tempByteArray;
 					DateTime horaAtual = DateTime::Now;
+					float minVoltage, maxVoltage;
 					UInt16 minThreshold, maxThreshold;
 
 					try
 					{
-						minThreshold = Convert::ToUInt16(sensorMinThreshold->Text);
-						maxThreshold = Convert::ToUInt16(sensorMaxThreshold->Text);
+						minVoltage = Convert::ToSingle(sensorMinThreshold->Text);
+						maxVoltage = Convert::ToSingle(sensorMaxThreshold->Text);
+						//minThreshold = Convert::ToUInt16(sensorMinThreshold->Text);
+						//maxThreshold = Convert::ToUInt16(sensorMaxThreshold->Text);
 					}
 					catch (System::FormatException^)
 					{
 						MessageBox::Show("Os limites devem ser valores numéricos.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 						return;
 					}
+
+					minThreshold = getValueFromVoltage(minVoltage);
+					maxThreshold = getValueFromVoltage(maxVoltage);
 
 					buffer[0] = 0xAA;
 					buffer[1] = 0x55;
@@ -2209,7 +2236,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 					// Tamanho do campo de dados
 					buffer[2] = 1;
 					// Comando
-					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_POWER_DOWN;
+					buffer[3] = BROAD_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_POWER_DOWN;
 
 					try
 					{
