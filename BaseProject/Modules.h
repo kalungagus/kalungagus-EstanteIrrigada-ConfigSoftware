@@ -29,6 +29,7 @@
 #define CMD_POWER_DOWN           0x07
 #define CMD_REQUEST_ACTION       0x08
 #define CMD_SET_TIMEOUT          0x09
+#define CMD_SET_SEND_TO_SERVER   0x0A
 
 //***************************************************************************************
 // // Frequências de alarme disponíveis

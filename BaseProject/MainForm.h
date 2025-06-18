@@ -30,7 +30,7 @@ namespace BaseProject
 	public ref class MainForm : public System::Windows::Forms::Form
 	{
 	public:
-		MainForm(void) : requestPowerDownVisualAnswer(false)
+		MainForm(void) : requestPowerDownVisualAnswer(false), isModuleOn(false)
 		{
 			InitializeComponent();
 			//
@@ -54,7 +54,6 @@ namespace BaseProject
 	private: System::Windows::Forms::SaveFileDialog^ dlgSaveCSV;
 	private: System::Windows::Forms::ToolStripStatusLabel^ stLabelNetConnection;
 	private: System::Windows::Forms::TabPage^ tabComm;
-
 	private: System::Windows::Forms::TextBox^ txtMessages;
 	private: System::Windows::Forms::Button^ btnTxtClear;
 	private: System::Windows::Forms::GroupBox^ gbxSerialConnection;
@@ -76,15 +75,6 @@ namespace BaseProject
 	private: System::Windows::Forms::TabControl^ tabCtrlApplication;
 	private: System::Windows::Forms::TabPage^ tabConfig;
 	private: System::Windows::Forms::CheckBox^ cbxSendToRouter;
-
-
-
-
-
-
-
-
-
 	private: System::Windows::Forms::GroupBox^ gbxEcho;
 	private: System::Windows::Forms::Label^ lblEcho;
 	private: System::Windows::Forms::TextBox^ txtSendMessage;
@@ -100,140 +90,61 @@ namespace BaseProject
 	private: System::Windows::Forms::Label^ lblSensor2;
 	private: System::Windows::Forms::Label^ lblSensor1;
 	private: System::Windows::Forms::Label^ lblLastSampleInstant;
-
-
-
-
-
-
-
 	private: System::Windows::Forms::GroupBox^ gbxRTC;
 	private: System::Windows::Forms::GroupBox^ gbxSensor1;
-
 	private: System::Windows::Forms::TextBox^ txtMaxThreshold1;
-
-
 	private: System::Windows::Forms::Label^ lblMaxThreshold1;
-
 	private: System::Windows::Forms::TextBox^ txtMinThreshold1;
-
 	private: System::Windows::Forms::Label^ lblMinThreshold1;
 	private: System::Windows::Forms::Button^ btnSendSensor1Config;
 	private: System::Windows::Forms::Button^ btnReadSensor1Config;
 	private: System::Windows::Forms::GroupBox^ gbxSensor6;
 	private: System::Windows::Forms::Button^ btnSendSensor6Config;
-
-
 	private: System::Windows::Forms::Button^ btnReadSensor6Config;
-
 	private: System::Windows::Forms::TextBox^ txtMaxThreshold6;
-
 	private: System::Windows::Forms::Label^ lblMaxThreshold6;
-
 	private: System::Windows::Forms::TextBox^ txtMinThreshold6;
-
 	private: System::Windows::Forms::Label^ lblMinThreshold6;
-
-
-
 	private: System::Windows::Forms::GroupBox^ gbxSensor5;
-private: System::Windows::Forms::Button^ btnSendSensor5Config;
-
-
-private: System::Windows::Forms::Button^ btnReadSensor5Config;
-
-private: System::Windows::Forms::TextBox^ txtMaxThreshold5;
-
-private: System::Windows::Forms::Label^ lblMaxThreshold5;
-
-private: System::Windows::Forms::TextBox^ txtMinThreshold5;
-
-private: System::Windows::Forms::Label^ lblMinThreshold5;
-
-
-
-private: System::Windows::Forms::GroupBox^ gbxSensor4;
-private: System::Windows::Forms::Button^ btnSendSensor4Config;
-
-
-private: System::Windows::Forms::Button^ btnReadSensor4Config;
-
-private: System::Windows::Forms::TextBox^ txtMaxThreshold4;
-
-private: System::Windows::Forms::Label^ lblMaxThreshold4;
-
-private: System::Windows::Forms::TextBox^ txtMinThreshold4;
-
-private: System::Windows::Forms::Label^ lblMinThreshold4;
-
-
-
-private: System::Windows::Forms::GroupBox^ gbxSensor3;
-private: System::Windows::Forms::Button^ btnSendSensor3Config;
-
-
-private: System::Windows::Forms::Button^ btnReadSensor3Config;
-
-private: System::Windows::Forms::TextBox^ txtMaxThreshold3;
-
-private: System::Windows::Forms::Label^ lblMaxThreshold3;
-
-private: System::Windows::Forms::TextBox^ txtMinThreshold3;
-
-private: System::Windows::Forms::Label^ lblMinThreshold3;
-
-
-
-private: System::Windows::Forms::GroupBox^ gbxSensor2;
-private: System::Windows::Forms::Button^ btnSendSensor2Config;
-
-
-private: System::Windows::Forms::Button^ btnReadSensor2Config;
-
-private: System::Windows::Forms::TextBox^ txtMaxThreshold2;
-
-private: System::Windows::Forms::Label^ lblMaxThreshold2;
-
-private: System::Windows::Forms::TextBox^ txtMinThreshold2;
-
-private: System::Windows::Forms::Label^ lblMinThreshold2;
-
-
-
-
-
-
-
-
-private: System::Windows::Forms::Button^ btnEnterPowerDown;
-private: System::Windows::Forms::Button^ btnSaveConfigs;
-private: System::Windows::Forms::ComboBox^ cmbxControl1Operation;
-private: System::Windows::Forms::ComboBox^ cmbxControl6Operation;
-
-
-private: System::Windows::Forms::ComboBox^ cmbxControl5Operation;
-
-private: System::Windows::Forms::ComboBox^ cmbxControl4Operation;
-
-private: System::Windows::Forms::ComboBox^ cmbxControl3Operation;
-
-private: System::Windows::Forms::ComboBox^ cmbxControl2Operation;
-private: System::Windows::Forms::GroupBox^ gbxServerMode;
-private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+	private: System::Windows::Forms::Button^ btnSendSensor5Config;
+	private: System::Windows::Forms::Button^ btnReadSensor5Config;
+	private: System::Windows::Forms::TextBox^ txtMaxThreshold5;
+	private: System::Windows::Forms::Label^ lblMaxThreshold5;
+	private: System::Windows::Forms::TextBox^ txtMinThreshold5;
+	private: System::Windows::Forms::Label^ lblMinThreshold5;
+	private: System::Windows::Forms::GroupBox^ gbxSensor4;
+	private: System::Windows::Forms::Button^ btnSendSensor4Config;
+	private: System::Windows::Forms::Button^ btnReadSensor4Config;
+	private: System::Windows::Forms::TextBox^ txtMaxThreshold4;
+	private: System::Windows::Forms::Label^ lblMaxThreshold4;
+	private: System::Windows::Forms::TextBox^ txtMinThreshold4;
+	private: System::Windows::Forms::Label^ lblMinThreshold4;
+	private: System::Windows::Forms::GroupBox^ gbxSensor3;
+	private: System::Windows::Forms::Button^ btnSendSensor3Config;
+	private: System::Windows::Forms::Button^ btnReadSensor3Config;
+	private: System::Windows::Forms::TextBox^ txtMaxThreshold3;
+	private: System::Windows::Forms::Label^ lblMaxThreshold3;
+	private: System::Windows::Forms::TextBox^ txtMinThreshold3;
+	private: System::Windows::Forms::Label^ lblMinThreshold3;
+	private: System::Windows::Forms::GroupBox^ gbxSensor2;
+	private: System::Windows::Forms::Button^ btnSendSensor2Config;
+	private: System::Windows::Forms::Button^ btnReadSensor2Config;
+	private: System::Windows::Forms::TextBox^ txtMaxThreshold2;
+	private: System::Windows::Forms::Label^ lblMaxThreshold2;
+	private: System::Windows::Forms::TextBox^ txtMinThreshold2;
+	private: System::Windows::Forms::Label^ lblMinThreshold2;
+	private: System::Windows::Forms::Button^ btnEnterPowerDown;
+	private: System::Windows::Forms::Button^ btnSaveConfigs;
+	private: System::Windows::Forms::ComboBox^ cmbxControl1Operation;
+	private: System::Windows::Forms::ComboBox^ cmbxControl6Operation;
+	private: System::Windows::Forms::ComboBox^ cmbxControl5Operation;
+	private: System::Windows::Forms::ComboBox^ cmbxControl4Operation;
+	private: System::Windows::Forms::ComboBox^ cmbxControl3Operation;
+	private: System::Windows::Forms::ComboBox^ cmbxControl2Operation;
+	private: System::Windows::Forms::GroupBox^ gbxServerMode;
+	private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
+	private: System::Windows::Forms::GroupBox^ gbxSendDataToServer;
+	private: System::Windows::Forms::CheckBox^ ckbxSendDataToServer;
 	private: System::ComponentModel::IContainer^ components;
 	protected:
 	private:
@@ -255,6 +166,8 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->stLabelNetConnection = (gcnew System::Windows::Forms::ToolStripStatusLabel());
 			this->dlgSaveCSV = (gcnew System::Windows::Forms::SaveFileDialog());
 			this->tabComm = (gcnew System::Windows::Forms::TabPage());
+			this->gbxSendDataToServer = (gcnew System::Windows::Forms::GroupBox());
+			this->ckbxSendDataToServer = (gcnew System::Windows::Forms::CheckBox());
 			this->gbxEcho = (gcnew System::Windows::Forms::GroupBox());
 			this->cbxSendToRouter = (gcnew System::Windows::Forms::CheckBox());
 			this->lblEcho = (gcnew System::Windows::Forms::Label());
@@ -346,6 +259,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->lblSensor1 = (gcnew System::Windows::Forms::Label());
 			this->statusStrip1->SuspendLayout();
 			this->tabComm->SuspendLayout();
+			this->gbxSendDataToServer->SuspendLayout();
 			this->gbxEcho->SuspendLayout();
 			this->gbxSerialConnection->SuspendLayout();
 			this->gbxNetConnect->SuspendLayout();
@@ -397,6 +311,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			// tabComm
 			// 
 			this->tabComm->BackColor = System::Drawing::SystemColors::Control;
+			this->tabComm->Controls->Add(this->gbxSendDataToServer);
 			this->tabComm->Controls->Add(this->gbxEcho);
 			this->tabComm->Controls->Add(this->txtMessages);
 			this->tabComm->Controls->Add(this->btnTxtClear);
@@ -410,13 +325,37 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->tabComm->TabIndex = 0;
 			this->tabComm->Text = L"Comunicação";
 			// 
+			// gbxSendDataToServer
+			// 
+			this->gbxSendDataToServer->Controls->Add(this->ckbxSendDataToServer);
+			this->gbxSendDataToServer->Enabled = false;
+			this->gbxSendDataToServer->Location = System::Drawing::Point(9, 166);
+			this->gbxSendDataToServer->Name = L"gbxSendDataToServer";
+			this->gbxSendDataToServer->Size = System::Drawing::Size(895, 59);
+			this->gbxSendDataToServer->TabIndex = 32;
+			this->gbxSendDataToServer->TabStop = false;
+			this->gbxSendDataToServer->Text = L"Envio de dados para o Banco de dados";
+			// 
+			// ckbxSendDataToServer
+			// 
+			this->ckbxSendDataToServer->AutoSize = true;
+			this->ckbxSendDataToServer->Checked = true;
+			this->ckbxSendDataToServer->CheckState = System::Windows::Forms::CheckState::Checked;
+			this->ckbxSendDataToServer->Location = System::Drawing::Point(10, 25);
+			this->ckbxSendDataToServer->Name = L"ckbxSendDataToServer";
+			this->ckbxSendDataToServer->Size = System::Drawing::Size(192, 20);
+			this->ckbxSendDataToServer->TabIndex = 0;
+			this->ckbxSendDataToServer->Text = L"Enviar dados para servidor";
+			this->ckbxSendDataToServer->UseVisualStyleBackColor = true;
+			this->ckbxSendDataToServer->CheckedChanged += gcnew System::EventHandler(this, &MainForm::ckbxSendDataToServer_CheckedChanged);
+			// 
 			// gbxEcho
 			// 
 			this->gbxEcho->Controls->Add(this->cbxSendToRouter);
 			this->gbxEcho->Controls->Add(this->lblEcho);
 			this->gbxEcho->Controls->Add(this->txtSendMessage);
 			this->gbxEcho->Controls->Add(this->btnSendEcho);
-			this->gbxEcho->Location = System::Drawing::Point(7, 166);
+			this->gbxEcho->Location = System::Drawing::Point(8, 231);
 			this->gbxEcho->Name = L"gbxEcho";
 			this->gbxEcho->Size = System::Drawing::Size(896, 98);
 			this->gbxEcho->TabIndex = 31;
@@ -477,12 +416,12 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->txtMessages->Enabled = false;
-			this->txtMessages->Location = System::Drawing::Point(9, 271);
+			this->txtMessages->Location = System::Drawing::Point(9, 336);
 			this->txtMessages->Margin = System::Windows::Forms::Padding(4);
 			this->txtMessages->Multiline = true;
 			this->txtMessages->Name = L"txtMessages";
 			this->txtMessages->ScrollBars = System::Windows::Forms::ScrollBars::Vertical;
-			this->txtMessages->Size = System::Drawing::Size(895, 297);
+			this->txtMessages->Size = System::Drawing::Size(895, 232);
 			this->txtMessages->TabIndex = 13;
 			// 
 			// btnTxtClear
@@ -503,7 +442,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxSerialConnection->Controls->Add(this->btnConnect);
 			this->gbxSerialConnection->Location = System::Drawing::Point(7, 7);
 			this->gbxSerialConnection->Name = L"gbxSerialConnection";
-			this->gbxSerialConnection->Size = System::Drawing::Size(891, 80);
+			this->gbxSerialConnection->Size = System::Drawing::Size(897, 80);
 			this->gbxSerialConnection->TabIndex = 25;
 			this->gbxSerialConnection->TabStop = false;
 			this->gbxSerialConnection->Text = L"Conexão com a placa por USB";
@@ -546,7 +485,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxNetConnect->Controls->Add(this->lblNetConnect);
 			this->gbxNetConnect->Location = System::Drawing::Point(9, 93);
 			this->gbxNetConnect->Name = L"gbxNetConnect";
-			this->gbxNetConnect->Size = System::Drawing::Size(891, 67);
+			this->gbxNetConnect->Size = System::Drawing::Size(895, 67);
 			this->gbxNetConnect->TabIndex = 27;
 			this->gbxNetConnect->TabStop = false;
 			this->gbxNetConnect->Text = L"Conexão wireless com a placa";
@@ -743,6 +682,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxSensor6->Controls->Add(this->lblMaxThreshold6);
 			this->gbxSensor6->Controls->Add(this->txtMinThreshold6);
 			this->gbxSensor6->Controls->Add(this->lblMinThreshold6);
+			this->gbxSensor6->Enabled = false;
 			this->gbxSensor6->Location = System::Drawing::Point(8, 429);
 			this->gbxSensor6->Name = L"gbxSensor6";
 			this->gbxSensor6->Size = System::Drawing::Size(896, 53);
@@ -824,6 +764,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxSensor5->Controls->Add(this->lblMaxThreshold5);
 			this->gbxSensor5->Controls->Add(this->txtMinThreshold5);
 			this->gbxSensor5->Controls->Add(this->lblMinThreshold5);
+			this->gbxSensor5->Enabled = false;
 			this->gbxSensor5->Location = System::Drawing::Point(8, 370);
 			this->gbxSensor5->Name = L"gbxSensor5";
 			this->gbxSensor5->Size = System::Drawing::Size(896, 53);
@@ -905,6 +846,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxSensor4->Controls->Add(this->lblMaxThreshold4);
 			this->gbxSensor4->Controls->Add(this->txtMinThreshold4);
 			this->gbxSensor4->Controls->Add(this->lblMinThreshold4);
+			this->gbxSensor4->Enabled = false;
 			this->gbxSensor4->Location = System::Drawing::Point(8, 311);
 			this->gbxSensor4->Name = L"gbxSensor4";
 			this->gbxSensor4->Size = System::Drawing::Size(896, 53);
@@ -986,6 +928,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxSensor3->Controls->Add(this->lblMaxThreshold3);
 			this->gbxSensor3->Controls->Add(this->txtMinThreshold3);
 			this->gbxSensor3->Controls->Add(this->lblMinThreshold3);
+			this->gbxSensor3->Enabled = false;
 			this->gbxSensor3->Location = System::Drawing::Point(8, 252);
 			this->gbxSensor3->Name = L"gbxSensor3";
 			this->gbxSensor3->Size = System::Drawing::Size(896, 53);
@@ -1067,6 +1010,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxSensor2->Controls->Add(this->lblMaxThreshold2);
 			this->gbxSensor2->Controls->Add(this->txtMinThreshold2);
 			this->gbxSensor2->Controls->Add(this->lblMinThreshold2);
+			this->gbxSensor2->Enabled = false;
 			this->gbxSensor2->Location = System::Drawing::Point(8, 193);
 			this->gbxSensor2->Name = L"gbxSensor2";
 			this->gbxSensor2->Size = System::Drawing::Size(896, 53);
@@ -1148,6 +1092,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxSensor1->Controls->Add(this->lblMaxThreshold1);
 			this->gbxSensor1->Controls->Add(this->txtMinThreshold1);
 			this->gbxSensor1->Controls->Add(this->lblMinThreshold1);
+			this->gbxSensor1->Enabled = false;
 			this->gbxSensor1->Location = System::Drawing::Point(8, 134);
 			this->gbxSensor1->Name = L"gbxSensor1";
 			this->gbxSensor1->Size = System::Drawing::Size(896, 53);
@@ -1225,6 +1170,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->gbxRTC->Controls->Add(this->lblModuleDateTime);
 			this->gbxRTC->Controls->Add(this->btnUpdateDateTime);
 			this->gbxRTC->Controls->Add(this->btnReadDateTime);
+			this->gbxRTC->Enabled = false;
 			this->gbxRTC->Location = System::Drawing::Point(8, 71);
 			this->gbxRTC->Name = L"gbxRTC";
 			this->gbxRTC->Size = System::Drawing::Size(896, 57);
@@ -1357,6 +1303,8 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			this->statusStrip1->PerformLayout();
 			this->tabComm->ResumeLayout(false);
 			this->tabComm->PerformLayout();
+			this->gbxSendDataToServer->ResumeLayout(false);
+			this->gbxSendDataToServer->PerformLayout();
 			this->gbxEcho->ResumeLayout(false);
 			this->gbxEcho->PerformLayout();
 			this->gbxSerialConnection->ResumeLayout(false);
@@ -1390,6 +1338,7 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 		private:
 			Module ^device, ^tcpDevice;
 			bool requestPowerDownVisualAnswer;
+			bool isModuleOn;
 
 			System::Void MainForm_Load(System::Object^ sender, System::EventArgs^ e)
 			{
@@ -1586,16 +1535,17 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 				txtMessages->Enabled = deviceConnected;
 				btnTxtClear->Enabled = deviceConnected;
 				gbxEcho->Enabled = deviceConnected;
-				gbxServerMode->Enabled = deviceConnected;
-				gbxRTC->Enabled = deviceConnected;
-				gbxSensor1->Enabled = deviceConnected;
-				gbxSensor2->Enabled = deviceConnected;
-				gbxSensor3->Enabled = deviceConnected;
-				gbxSensor4->Enabled = deviceConnected;
-				gbxSensor5->Enabled = deviceConnected;
-				gbxSensor6->Enabled = deviceConnected;
-				btnSaveConfigs->Enabled = deviceConnected;
-				btnEnterPowerDown->Enabled = deviceConnected;
+				gbxServerMode->Enabled = deviceConnected && !isModuleOn;
+				gbxRTC->Enabled = deviceConnected && isModuleOn;
+				gbxSensor1->Enabled = deviceConnected && isModuleOn;
+				gbxSensor2->Enabled = deviceConnected && isModuleOn;
+				gbxSensor3->Enabled = deviceConnected && isModuleOn;
+				gbxSensor4->Enabled = deviceConnected && isModuleOn;
+				gbxSensor5->Enabled = deviceConnected && isModuleOn;
+				gbxSensor6->Enabled = deviceConnected && isModuleOn;
+				btnSaveConfigs->Enabled = deviceConnected && isModuleOn;
+				btnEnterPowerDown->Enabled = deviceConnected && isModuleOn;
+				gbxSendDataToServer->Enabled = deviceConnected;
 
 				if (usbConnected)
 				{
@@ -1939,11 +1889,17 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 								this->cbxHaltPowerDown->CheckedChanged += gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
 								MessageBox::Show("Módulo operando em modo Power Down.", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 								requestPowerDownVisualAnswer = false;
+								isModuleOn = false;
+								setInterfaceState();
 							}
 							break;
 						case CMD_SET_TIMEOUT:
 							if (buffer[1] == 0x06)
+							{
 								MessageBox::Show("Comando de alteração de timeout enviado.", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+								isModuleOn = true;
+								setInterfaceState();
+							}
 							break;
 						default:
 							break;
@@ -2294,6 +2250,39 @@ private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 			System::Void cbxHaltPowerDown_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
 			{
 				setPowerDown((cbxHaltPowerDown->Checked) ? 1 : 0);
+			}
+			System::Void ckbxSendDataToServer_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
+			{
+				Module^ priorityDevice = getValidDevice();
+
+				if (priorityDevice != nullptr && priorityDevice->Connected)
+				{
+					array<unsigned char>^ buffer = gcnew array<unsigned char>(5);
+
+					buffer[0] = 0xAA;
+					buffer[1] = 0x55;
+					// Tamanho do campo de dados
+					buffer[2] = 2;
+					// Comando
+					buffer[3] = ROUTER_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_SEND_TO_SERVER;
+					buffer[4] = (ckbxSendDataToServer->Checked) ? 1 : 0;
+
+					try
+					{
+						priorityDevice->Write(buffer, 0, buffer->Length);
+					}
+					catch (IOException^)
+					{
+						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					}
+				}
+				else
+				{
+					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					this->cbxHaltPowerDown->CheckedChanged -= gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
+					cbxHaltPowerDown->Checked = false;
+					this->cbxHaltPowerDown->CheckedChanged += gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
+				}
 			}
 };
 }
