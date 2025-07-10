@@ -74,7 +74,6 @@ namespace Modules
 			array<Byte>^ receptionBuffer, ^lastReceptionBuffer;
 			int dataPos = 0;
 			int state = 0;
-			long long packetCounter = 0;
 
 		public:
 			CommLayer ^Comm;
@@ -142,7 +141,6 @@ namespace Modules
 			{
 				try
 				{
-					//if (Object::ReferenceEquals(Comm, nullptr) == false)
 					if(Comm != nullptr)
 					{
 						Comm->Close();
@@ -151,12 +149,14 @@ namespace Modules
 				}
 				catch (NullReferenceException ^) {}
 			}
+
 			// Escreve um array de caracteres no buffer de transmissão
 			void Write(array<unsigned char>^ buffer, int offset, int size)
 			{
 				if (Object::ReferenceEquals(Comm, nullptr) == false)
 					Comm->Write(buffer, offset, size);
 			}
+
 			// Lê dados presentes no buffer de recepção
 			int Read(array<unsigned char>^ buffer, int offset, int size)
 			{
@@ -171,6 +171,73 @@ namespace Modules
 				{
 					Comm->Clear();
 				}
+			}
+
+			// Função de CRC8 utilizada para o protocolo de comunicação
+			unsigned char crc8_update(unsigned char crc, unsigned char data)
+			{
+				crc ^= data;
+				for (int i = 0; i < 8; ++i)
+				{
+					if ((crc & 0x80) != 0)
+						crc = (unsigned char)((crc << 1) ^ 0x07);
+					else
+						crc <<= 1;
+				}
+				return crc;
+			}
+
+			void SendPacket(unsigned char cmd, array<unsigned char>^ buffer)
+			{
+				if (Object::ReferenceEquals(Comm, nullptr))
+					return;
+
+				unsigned char crc = 0x00;
+				int totalSize = 4 + buffer->Length + 1; // cabeçalho (2) + tamanho (1) + comando (1) + payload + CRC (1)
+				array<unsigned char>^ packet = gcnew array<unsigned char>(totalSize);
+
+				// Header
+				packet[0] = 0xAA;
+				packet[1] = 0x55;
+				packet[2] = (unsigned char)(buffer->Length + 2);
+				packet[3] = cmd;
+
+				// Payload
+				Array::Copy(buffer, 0, packet, 4, buffer->Length);
+
+				// Calcula o CRC8 sobre [0..totalSize - 2]
+				for (int i = 2; i < totalSize - 1; ++i)
+					crc = crc8_update(crc, packet[i]);
+
+				// Adiciona o CRC no final
+				packet[totalSize - 1] = crc;
+
+				Comm->Write(packet, 0, packet->Length);
+			}
+
+			void SendPacket(unsigned char cmd)
+			{
+				if (Object::ReferenceEquals(Comm, nullptr))
+					return;
+
+				unsigned char crc = 0x00;
+				int totalSize = 4 + 1; // cabeçalho (2) + tamanho (1) + comando (1) + CRC (1)
+				array<unsigned char>^ packet = gcnew array<unsigned char>(totalSize);
+
+				// Header
+				packet[0] = 0xAA;
+				packet[1] = 0x55;
+				packet[2] = 2;
+				packet[3] = cmd;
+
+				// Calcula o CRC8 sobre [0..totalSize - 2]
+				for (int i = 2; i < totalSize - 1; ++i)
+					crc = crc8_update(crc, packet[i]);
+
+				// Adiciona o CRC no final
+				packet[totalSize - 1] = crc;
+
+				Comm->Write(packet, 0, packet->Length);
 			}
 
 			// Rotina de tratamento de recepção
@@ -189,15 +256,43 @@ namespace Modules
 							{
 								if (Comm->Read(header, 1, 1) && header[1] == 0x55)
 								{
-									Comm->Read(header, 2, 1);
-									receptionBuffer = gcnew array<Byte>(header[2]);
+									if (!Comm->Read(header, 2, 1))
+										continue; // erro na leitura do tamanho, tenta de novo
+
+									int totalSize = header[2];        // O tamanho do pacote inclui o CRC.
+									int payloadSize = totalSize - 1;  // Retirando o CRC.
+
+									receptionBuffer = gcnew array<unsigned char>(totalSize);
 									readedBytes = 0;
-									packetCounter++;
 
-									while (readedBytes < header[2])
-										readedBytes += Comm->Read(receptionBuffer, readedBytes, receptionBuffer->Length - readedBytes);
+									while (readedBytes < totalSize)
+									{
+										int n = Comm->Read(receptionBuffer, readedBytes, receptionBuffer->Length - readedBytes);
+										if (n <= 0)
+											break;
 
-									onReceive(this, receptionBuffer);
+										readedBytes += n;
+									}
+
+									if (readedBytes < totalSize)     // Pacote incompleto, descarta e continua
+										continue;
+
+									// Validação CRC
+									unsigned char crc = 0x00;
+									// Calcula CRC dos bytes: [tamanho (header[2]) + payload] (tudo exceto o CRC)
+									crc = crc8_update(crc, header[2]);
+									for (int i = 0; i < payloadSize; i++)
+									{
+										crc = crc8_update(crc, receptionBuffer[i]);
+									}
+
+									if (crc == receptionBuffer[payloadSize])
+									{
+										// Pacote válido, dispara evento com payload (sem CRC)
+										array<unsigned char>^ payloadOnly = gcnew array<unsigned char>(payloadSize);
+										Array::Copy(receptionBuffer, 0, payloadOnly, 0, payloadSize);
+										onReceive(this, payloadOnly);
+									}
 								}
 							}
 						}

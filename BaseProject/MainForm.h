@@ -145,6 +145,13 @@ namespace BaseProject
 	private: System::Windows::Forms::CheckBox^ cbxHaltPowerDown;
 	private: System::Windows::Forms::GroupBox^ gbxSendDataToServer;
 	private: System::Windows::Forms::CheckBox^ ckbxSendDataToServer;
+private: System::Windows::Forms::Label^ lblVbg;
+
+private: System::Windows::Forms::Label^ lblVdd;
+
+private: System::Windows::Forms::Label^ lblVss;
+private: System::Windows::Forms::Button^ btnAllSensorsUpdate;
+
 	private: System::ComponentModel::IContainer^ components;
 	protected:
 	private:
@@ -193,6 +200,7 @@ namespace BaseProject
 			this->lblNetConnect = (gcnew System::Windows::Forms::Label());
 			this->tabCtrlApplication = (gcnew System::Windows::Forms::TabControl());
 			this->tabConfig = (gcnew System::Windows::Forms::TabPage());
+			this->btnAllSensorsUpdate = (gcnew System::Windows::Forms::Button());
 			this->gbxServerMode = (gcnew System::Windows::Forms::GroupBox());
 			this->cbxHaltPowerDown = (gcnew System::Windows::Forms::CheckBox());
 			this->btnEnterPowerDown = (gcnew System::Windows::Forms::Button());
@@ -250,6 +258,9 @@ namespace BaseProject
 			this->btnUpdateDateTime = (gcnew System::Windows::Forms::Button());
 			this->btnReadDateTime = (gcnew System::Windows::Forms::Button());
 			this->tabSamples = (gcnew System::Windows::Forms::TabPage());
+			this->lblVbg = (gcnew System::Windows::Forms::Label());
+			this->lblVdd = (gcnew System::Windows::Forms::Label());
+			this->lblVss = (gcnew System::Windows::Forms::Label());
 			this->lblLastSampleInstant = (gcnew System::Windows::Forms::Label());
 			this->lblSensor6 = (gcnew System::Windows::Forms::Label());
 			this->lblSensor5 = (gcnew System::Windows::Forms::Label());
@@ -615,6 +626,7 @@ namespace BaseProject
 			// tabConfig
 			// 
 			this->tabConfig->BackColor = System::Drawing::SystemColors::Control;
+			this->tabConfig->Controls->Add(this->btnAllSensorsUpdate);
 			this->tabConfig->Controls->Add(this->gbxServerMode);
 			this->tabConfig->Controls->Add(this->btnEnterPowerDown);
 			this->tabConfig->Controls->Add(this->btnSaveConfigs);
@@ -631,6 +643,16 @@ namespace BaseProject
 			this->tabConfig->Size = System::Drawing::Size(912, 610);
 			this->tabConfig->TabIndex = 2;
 			this->tabConfig->Text = L"Configuração";
+			// 
+			// btnAllSensorsUpdate
+			// 
+			this->btnAllSensorsUpdate->Location = System::Drawing::Point(570, 573);
+			this->btnAllSensorsUpdate->Name = L"btnAllSensorsUpdate";
+			this->btnAllSensorsUpdate->Size = System::Drawing::Size(139, 23);
+			this->btnAllSensorsUpdate->TabIndex = 15;
+			this->btnAllSensorsUpdate->Text = L"Atualizar todos";
+			this->btnAllSensorsUpdate->UseVisualStyleBackColor = true;
+			this->btnAllSensorsUpdate->Click += gcnew System::EventHandler(this, &MainForm::btnAllSensorsUpdate_Click);
 			// 
 			// gbxServerMode
 			// 
@@ -655,7 +677,7 @@ namespace BaseProject
 			// 
 			// btnEnterPowerDown
 			// 
-			this->btnEnterPowerDown->Location = System::Drawing::Point(467, 573);
+			this->btnEnterPowerDown->Location = System::Drawing::Point(347, 573);
 			this->btnEnterPowerDown->Name = L"btnEnterPowerDown";
 			this->btnEnterPowerDown->Size = System::Drawing::Size(217, 23);
 			this->btnEnterPowerDown->TabIndex = 13;
@@ -665,7 +687,7 @@ namespace BaseProject
 			// 
 			// btnSaveConfigs
 			// 
-			this->btnSaveConfigs->Location = System::Drawing::Point(257, 573);
+			this->btnSaveConfigs->Location = System::Drawing::Point(137, 573);
 			this->btnSaveConfigs->Name = L"btnSaveConfigs";
 			this->btnSaveConfigs->Size = System::Drawing::Size(204, 23);
 			this->btnSaveConfigs->TabIndex = 12;
@@ -694,9 +716,9 @@ namespace BaseProject
 			// 
 			this->cmbxControl6Operation->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cmbxControl6Operation->FormattingEnabled = true;
-			this->cmbxControl6Operation->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+			this->cmbxControl6Operation->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
 				L"Desligado", L"Sensor ligado", L"Valvula controlada por sensor",
-					L"Forçar válvula ligada", L"Forçar válvula desligada"
+					L"Forçar válvula ligada", L"Forçar válvula desligada", L"Controle com derivada"
 			});
 			this->cmbxControl6Operation->Location = System::Drawing::Point(6, 17);
 			this->cmbxControl6Operation->Name = L"cmbxControl6Operation";
@@ -776,9 +798,9 @@ namespace BaseProject
 			// 
 			this->cmbxControl5Operation->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cmbxControl5Operation->FormattingEnabled = true;
-			this->cmbxControl5Operation->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+			this->cmbxControl5Operation->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
 				L"Desligado", L"Sensor ligado", L"Valvula controlada por sensor",
-					L"Forçar válvula ligada", L"Forçar válvula desligada"
+					L"Forçar válvula ligada", L"Forçar válvula desligada", L"Controle com derivada"
 			});
 			this->cmbxControl5Operation->Location = System::Drawing::Point(6, 17);
 			this->cmbxControl5Operation->Name = L"cmbxControl5Operation";
@@ -858,9 +880,9 @@ namespace BaseProject
 			// 
 			this->cmbxControl4Operation->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cmbxControl4Operation->FormattingEnabled = true;
-			this->cmbxControl4Operation->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+			this->cmbxControl4Operation->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
 				L"Desligado", L"Sensor ligado", L"Valvula controlada por sensor",
-					L"Forçar válvula ligada", L"Forçar válvula desligada"
+					L"Forçar válvula ligada", L"Forçar válvula desligada", L"Controle com derivada"
 			});
 			this->cmbxControl4Operation->Location = System::Drawing::Point(6, 19);
 			this->cmbxControl4Operation->Name = L"cmbxControl4Operation";
@@ -940,9 +962,9 @@ namespace BaseProject
 			// 
 			this->cmbxControl3Operation->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cmbxControl3Operation->FormattingEnabled = true;
-			this->cmbxControl3Operation->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+			this->cmbxControl3Operation->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
 				L"Desligado", L"Sensor ligado", L"Valvula controlada por sensor",
-					L"Forçar válvula ligada", L"Forçar válvula desligada"
+					L"Forçar válvula ligada", L"Forçar válvula desligada", L"Controle com derivada"
 			});
 			this->cmbxControl3Operation->Location = System::Drawing::Point(6, 18);
 			this->cmbxControl3Operation->Name = L"cmbxControl3Operation";
@@ -1022,9 +1044,9 @@ namespace BaseProject
 			// 
 			this->cmbxControl2Operation->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cmbxControl2Operation->FormattingEnabled = true;
-			this->cmbxControl2Operation->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+			this->cmbxControl2Operation->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
 				L"Desligado", L"Sensor ligado", L"Valvula controlada por sensor",
-					L"Forçar válvula ligada", L"Forçar válvula desligada"
+					L"Forçar válvula ligada", L"Forçar válvula desligada", L"Controle com derivada"
 			});
 			this->cmbxControl2Operation->Location = System::Drawing::Point(6, 19);
 			this->cmbxControl2Operation->Name = L"cmbxControl2Operation";
@@ -1104,9 +1126,9 @@ namespace BaseProject
 			// 
 			this->cmbxControl1Operation->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->cmbxControl1Operation->FormattingEnabled = true;
-			this->cmbxControl1Operation->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+			this->cmbxControl1Operation->Items->AddRange(gcnew cli::array< System::Object^  >(6) {
 				L"Desligado", L"Sensor ligado", L"Valvula controlada por sensor",
-					L"Forçar válvula ligada", L"Forçar válvula desligada"
+					L"Forçar válvula ligada", L"Forçar válvula desligada", L"Controle com derivada"
 			});
 			this->cmbxControl1Operation->Location = System::Drawing::Point(6, 19);
 			this->cmbxControl1Operation->Name = L"cmbxControl1Operation";
@@ -1210,6 +1232,9 @@ namespace BaseProject
 			// tabSamples
 			// 
 			this->tabSamples->BackColor = System::Drawing::SystemColors::Control;
+			this->tabSamples->Controls->Add(this->lblVbg);
+			this->tabSamples->Controls->Add(this->lblVdd);
+			this->tabSamples->Controls->Add(this->lblVss);
 			this->tabSamples->Controls->Add(this->lblLastSampleInstant);
 			this->tabSamples->Controls->Add(this->lblSensor6);
 			this->tabSamples->Controls->Add(this->lblSensor5);
@@ -1223,6 +1248,33 @@ namespace BaseProject
 			this->tabSamples->TabIndex = 3;
 			this->tabSamples->Text = L"Leituras";
 			// 
+			// lblVbg
+			// 
+			this->lblVbg->AutoSize = true;
+			this->lblVbg->Location = System::Drawing::Point(8, 200);
+			this->lblVbg->Name = L"lblVbg";
+			this->lblVbg->Size = System::Drawing::Size(46, 16);
+			this->lblVbg->TabIndex = 10;
+			this->lblVbg->Text = L"Vbg: --";
+			// 
+			// lblVdd
+			// 
+			this->lblVdd->AutoSize = true;
+			this->lblVdd->Location = System::Drawing::Point(8, 175);
+			this->lblVdd->Name = L"lblVdd";
+			this->lblVdd->Size = System::Drawing::Size(46, 16);
+			this->lblVdd->TabIndex = 9;
+			this->lblVdd->Text = L"Vdd: --";
+			// 
+			// lblVss
+			// 
+			this->lblVss->AutoSize = true;
+			this->lblVss->Location = System::Drawing::Point(8, 150);
+			this->lblVss->Name = L"lblVss";
+			this->lblVss->Size = System::Drawing::Size(44, 16);
+			this->lblVss->TabIndex = 8;
+			this->lblVss->Text = L"Vss: --";
+			// 
 			// lblLastSampleInstant
 			// 
 			this->lblLastSampleInstant->AutoSize = true;
@@ -1235,7 +1287,7 @@ namespace BaseProject
 			// lblSensor6
 			// 
 			this->lblSensor6->AutoSize = true;
-			this->lblSensor6->Location = System::Drawing::Point(391, 92);
+			this->lblSensor6->Location = System::Drawing::Point(391, 90);
 			this->lblSensor6->Name = L"lblSensor6";
 			this->lblSensor6->Size = System::Drawing::Size(74, 16);
 			this->lblSensor6->TabIndex = 6;
@@ -1253,7 +1305,7 @@ namespace BaseProject
 			// lblSensor4
 			// 
 			this->lblSensor4->AutoSize = true;
-			this->lblSensor4->Location = System::Drawing::Point(391, 39);
+			this->lblSensor4->Location = System::Drawing::Point(391, 40);
 			this->lblSensor4->Name = L"lblSensor4";
 			this->lblSensor4->Size = System::Drawing::Size(74, 16);
 			this->lblSensor4->TabIndex = 4;
@@ -1262,7 +1314,7 @@ namespace BaseProject
 			// lblSensor3
 			// 
 			this->lblSensor3->AutoSize = true;
-			this->lblSensor3->Location = System::Drawing::Point(8, 92);
+			this->lblSensor3->Location = System::Drawing::Point(8, 90);
 			this->lblSensor3->Name = L"lblSensor3";
 			this->lblSensor3->Size = System::Drawing::Size(74, 16);
 			this->lblSensor3->TabIndex = 3;
@@ -1280,7 +1332,7 @@ namespace BaseProject
 			// lblSensor1
 			// 
 			this->lblSensor1->AutoSize = true;
-			this->lblSensor1->Location = System::Drawing::Point(8, 39);
+			this->lblSensor1->Location = System::Drawing::Point(8, 40);
 			this->lblSensor1->Name = L"lblSensor1";
 			this->lblSensor1->Size = System::Drawing::Size(74, 16);
 			this->lblSensor1->TabIndex = 1;
@@ -1545,6 +1597,7 @@ namespace BaseProject
 				gbxSensor6->Enabled = deviceConnected && isModuleOn;
 				btnSaveConfigs->Enabled = deviceConnected && isModuleOn;
 				btnEnterPowerDown->Enabled = deviceConnected && isModuleOn;
+				btnAllSensorsUpdate->Enabled = deviceConnected && isModuleOn;
 				gbxSendDataToServer->Enabled = deviceConnected;
 
 				if (usbConnected)
@@ -1782,6 +1835,47 @@ namespace BaseProject
 				return(priorityDevice);
 			}
 
+			System::Void SetControlConfig(array<unsigned char>^ buffer, int offset)
+			{
+				float minVoltage = getVoltageFromValue(BitConverter::ToUInt16(buffer, offset + 2));
+				float maxVoltage = getVoltageFromValue(BitConverter::ToUInt16(buffer, offset + 4));
+				int operation = buffer[offset+1];
+
+				switch (buffer[offset])
+				{
+					case 0:
+						cmbxControl1Operation->SelectedIndex = operation;
+						txtMinThreshold1->Text = String::Format("{0:F2}", minVoltage);
+						txtMaxThreshold1->Text = String::Format("{0:F2}", maxVoltage);
+						break;
+					case 1:
+						cmbxControl2Operation->SelectedIndex = operation;
+						txtMinThreshold2->Text = String::Format("{0:F2}", minVoltage);
+						txtMaxThreshold2->Text = String::Format("{0:F2}", maxVoltage);
+						break;
+					case 2:
+						cmbxControl3Operation->SelectedIndex = operation;
+						txtMinThreshold3->Text = String::Format("{0:F2}", minVoltage);
+						txtMaxThreshold3->Text = String::Format("{0:F2}", maxVoltage);
+						break;
+					case 3:
+						cmbxControl4Operation->SelectedIndex = operation;
+						txtMinThreshold4->Text = String::Format("{0:F2}", minVoltage);
+						txtMaxThreshold4->Text = String::Format("{0:F2}", maxVoltage);
+						break;
+					case 4:
+						cmbxControl5Operation->SelectedIndex = operation;
+						txtMinThreshold5->Text = String::Format("{0:F2}", minVoltage);
+						txtMaxThreshold5->Text = String::Format("{0:F2}", maxVoltage);
+						break;
+					case 5:
+						cmbxControl6Operation->SelectedIndex = operation;
+						txtMinThreshold6->Text = String::Format("{0:F2}", minVoltage);
+						txtMaxThreshold6->Text = String::Format("{0:F2}", maxVoltage);
+						break;
+				}
+			}
+
 			System::Void ReceptionHandler(Object^ eqp, array<unsigned char>^ buffer)
 			{
 				if (txtMessages->InvokeRequired)
@@ -1817,60 +1911,35 @@ namespace BaseProject
 							break;
 						case CMD_SEND_SAMPLES:
 							{
+								UInt16 vss, vdd, vbg;
 								UInt16 sensor1, sensor2, sensor3, sensor4, sensor5, sensor6;
 								lblLastSampleInstant->Text = String::Format("Última amostra: {0:D02}/{1:D02}/{2} {3:D02}:{4:D02}:{5:D02}",
 									bcdToInt(buffer[3]), bcdToInt(buffer[4]), 2000 + bcdToInt(buffer[1]),
 									bcdToInt(buffer[5]), bcdToInt(buffer[8]), bcdToInt(buffer[7]));
-								sensor1 = BitConverter::ToUInt16(buffer, 9);
-								sensor2 = BitConverter::ToUInt16(buffer, 11);
-								sensor3 = BitConverter::ToUInt16(buffer, 13);
-								sensor4 = BitConverter::ToUInt16(buffer, 15);
-								sensor5 = BitConverter::ToUInt16(buffer, 17);
-								sensor6 = BitConverter::ToUInt16(buffer, 19);
-								lblSensor1->Text = String::Format("Sensor 1: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor1), sensor1, buffer[21] ? "ativa" : "desativa");
-								lblSensor2->Text = String::Format("Sensor 2: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor2), sensor2, buffer[22] ? "ativa" : "desativa");
-								lblSensor3->Text = String::Format("Sensor 3: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor3), sensor3, buffer[23] ? "ativa" : "desativa");
-								lblSensor4->Text = String::Format("Sensor 4: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor4), sensor4, buffer[24] ? "ativa" : "desativa");
-								lblSensor5->Text = String::Format("Sensor 5: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor5), sensor5, buffer[25] ? "ativa" : "desativa");
-								lblSensor6->Text = String::Format("Sensor 6: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor6), sensor6, buffer[26] ? "ativa" : "desativa");
+								vss = BitConverter::ToUInt16(buffer, 9);
+								vdd = BitConverter::ToUInt16(buffer, 11);
+								vbg = BitConverter::ToUInt16(buffer, 13);
+								sensor1 = BitConverter::ToUInt16(buffer, 15);
+								sensor2 = BitConverter::ToUInt16(buffer, 17);
+								sensor3 = BitConverter::ToUInt16(buffer, 19);
+								sensor4 = BitConverter::ToUInt16(buffer, 21);
+								sensor5 = BitConverter::ToUInt16(buffer, 23);
+								sensor6 = BitConverter::ToUInt16(buffer, 25);
+								lblVss->Text = String::Format("Vss: {0:F2} V", getVoltageFromValue(vss));
+								lblVdd->Text = String::Format("Vdd: {0:F2} V", getVoltageFromValue(vdd));
+								lblVbg->Text = String::Format("Vbg: {0:F2} V", getVoltageFromValue(vbg));
+								lblSensor1->Text = String::Format("Sensor 1: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor1), sensor1, buffer[27] ? "ativa" : "desativa");
+								lblSensor2->Text = String::Format("Sensor 2: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor2), sensor2, buffer[28] ? "ativa" : "desativa");
+								lblSensor3->Text = String::Format("Sensor 3: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor3), sensor3, buffer[29] ? "ativa" : "desativa");
+								lblSensor4->Text = String::Format("Sensor 4: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor4), sensor4, buffer[30] ? "ativa" : "desativa");
+								lblSensor5->Text = String::Format("Sensor 5: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor5), sensor5, buffer[31] ? "ativa" : "desativa");
+								lblSensor6->Text = String::Format("Sensor 6: {0:F2} V ({1}) [Válvula {2}]", getVoltageFromValue(sensor6), sensor6, buffer[32] ? "ativa" : "desativa");
 							}
 							break;
 						case CMD_GET_CONTROL_CONFIG:
-							switch (buffer[1])
-							{
-								case 0:
-									cmbxControl1Operation->SelectedIndex = buffer[2];
-									txtMinThreshold1->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
-									txtMaxThreshold1->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
-									break;
-								case 1:
-									cmbxControl2Operation->SelectedIndex = buffer[2];
-									txtMinThreshold2->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
-									txtMaxThreshold2->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
-									break;
-								case 2:
-									cmbxControl3Operation->SelectedIndex = buffer[2];
-									txtMinThreshold3->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
-									txtMaxThreshold3->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
-									break;
-								case 3:
-									cmbxControl4Operation->SelectedIndex = buffer[2];
-									txtMinThreshold4->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
-									txtMaxThreshold4->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
-									break;
-								case 4:
-									cmbxControl5Operation->SelectedIndex = buffer[2];
-									txtMinThreshold5->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
-									txtMaxThreshold5->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
-									break;
-								case 5:
-									cmbxControl6Operation->SelectedIndex = buffer[2];
-									txtMinThreshold6->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 3)));
-									txtMaxThreshold6->Text = String::Format("{0:F2}", getVoltageFromValue(BitConverter::ToUInt16(buffer, 5)));
-									break;
-								default:
-									break;
-							}
+							for (int offset = 1; offset < buffer->Length; offset += 6)
+								SetControlConfig(buffer, offset);
+							break;
 						case CMD_SET_CONTROL_CONFIG:
 							if (buffer[1] == 0x06)
 								MessageBox::Show("Configuração atualizada", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
@@ -1899,6 +1968,7 @@ namespace BaseProject
 								MessageBox::Show("Comando de alteração de timeout enviado.", "Sucesso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 								isModuleOn = true;
 								setInterfaceState();
+								getSensorConfig(0xFF);
 							}
 							break;
 						default:
@@ -1910,156 +1980,138 @@ namespace BaseProject
 			System::Void btnSendEcho_Click(System::Object^ sender, System::EventArgs^ e)
 			{
 				Module^ priorityDevice = getValidDevice();
-
-				if (priorityDevice != nullptr && priorityDevice->Connected)
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(txtSendMessage->Text->Length + 6);
-					array<unsigned char>^ message = Encoding::ASCII->GetBytes(txtSendMessage->Text);
-					int index;
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
+				}
 
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = safe_cast<unsigned char>(txtSendMessage->Text->Length + 3);
-					// Comando
-					buffer[3] = ((cbxSendToRouter->Checked) ? ROUTER_COMMAND : ENDPOINT_COMMAND) | COMMAND_SOURCE_SOFTWARE | CMD_MESSAGE;
-					// Texto para envio
-					for (index = 0; index < message->Length; index++)
-						buffer[4 + index] = message[index];
+				if (String::IsNullOrWhiteSpace(txtSendMessage->Text))
+				{
+					MessageBox::Show("Digite uma mensagem para enviar o ECHO.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
+				}
 
-					buffer[4 + index++] = '\r';
-					buffer[4 + index++] = '\n';
+				array<unsigned char>^ message = Encoding::ASCII->GetBytes(txtSendMessage->Text + "\r\n");				
+				unsigned char cmd = ((cbxSendToRouter->Checked) ? ROUTER_COMMAND : ENDPOINT_COMMAND) | COMMAND_SOURCE_SOFTWARE | CMD_MESSAGE;
+				btnSendEcho->Enabled = false;
 
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
+				try
+				{
+					priorityDevice->SendPacket(cmd, message);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+				}
+				finally
+				{
+					btnSendEcho->Enabled = true;
 				}
 			}
 
 			System::Void btnReadDateTime_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				Module^ priorityDevice = getValidDevice();
-
-				if (priorityDevice != nullptr && priorityDevice->Connected)
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(4);
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 1;
-					// Comando
-					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_GET_DATETIME;
-					
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
 				}
-				else
+
+				try
 				{
-					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					priorityDevice->SendPacket(ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_GET_DATETIME);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 			System::Void btnUpdateDateTime_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				Module^ priorityDevice = getValidDevice();
-
-				if (priorityDevice != nullptr && priorityDevice->Connected)
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(12);
-					DateTime horaAtual = DateTime::Now;
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 9;
-					// Comando
-					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_DATETIME;
-					buffer[4] = intToBcd(horaAtual.Year - 2000);
-					buffer[5] = 0;
-					buffer[6] = intToBcd(horaAtual.Day);
-					buffer[7] = intToBcd(horaAtual.Month);
-					buffer[8] = intToBcd(horaAtual.Hour);
-					buffer[9] = safe_cast<unsigned char>(horaAtual.DayOfWeek);
-					buffer[10] = intToBcd(horaAtual.Second);
-					buffer[11] = intToBcd(horaAtual.Minute);
-
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
 				}
-				else
+
+				array<unsigned char>^ buffer = gcnew array<unsigned char>(8);
+				DateTime horaAtual = DateTime::Now;
+
+				buffer[0] = intToBcd(horaAtual.Year - 2000);
+				buffer[1] = 0;
+				buffer[2] = intToBcd(horaAtual.Day);
+				buffer[3] = intToBcd(horaAtual.Month);
+				buffer[4] = intToBcd(horaAtual.Hour);
+				buffer[5] = safe_cast<unsigned char>(horaAtual.DayOfWeek);
+				buffer[6] = intToBcd(horaAtual.Second);
+				buffer[7] = intToBcd(horaAtual.Minute);
+
+				try
 				{
-					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					priorityDevice->SendPacket(ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_DATETIME, buffer);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 
 			void getSensorConfig(uint8_t sensorID)
 			{
 				Module^ priorityDevice = getValidDevice();
-
-				if (sensorID < 6 && priorityDevice != nullptr && priorityDevice->Connected)
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(5);
-					DateTime horaAtual = DateTime::Now;
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 2;
-					// Comando
-					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_GET_CONTROL_CONFIG;
-					buffer[4] = sensorID;
-
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
 				}
-				else
+
+				if (sensorID != 0xFF && sensorID > 5)
 				{
-					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					MessageBox::Show("Sensor inválido.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
+				}
+				
+				array<unsigned char>^ buffer = gcnew array<unsigned char>(1);
+				buffer[0] = sensorID;
+
+				try
+				{
+					priorityDevice->SendPacket(ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_GET_CONTROL_CONFIG, buffer);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
+
 			System::Void btnReadSensor1Config_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				getSensorConfig(0);
 			}
+
 			System::Void btnReadSensor2Config_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				getSensorConfig(1);
 			}
+
 			System::Void btnReadSensor3Config_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				getSensorConfig(2);
 			}
+
 			System::Void btnReadSensor4Config_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				getSensorConfig(3);
 			}
+
 			System::Void btnReadSensor5Config_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				getSensorConfig(4);
 			}
+
 			System::Void btnReadSensor6Config_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				getSensorConfig(5);
@@ -2068,58 +2120,54 @@ namespace BaseProject
 			void setSensorConfig(uint8_t sensorID, ComboBox ^controlOperation, TextBox ^sensorMinThreshold, TextBox ^sensorMaxThreshold)
 			{
 				Module^ priorityDevice = getValidDevice();
-
-				if (sensorID < 6 && priorityDevice != nullptr && priorityDevice->Connected)
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(10);
-					array<unsigned char>^ tempByteArray;
-					DateTime horaAtual = DateTime::Now;
-					float minVoltage, maxVoltage;
-					UInt16 minThreshold, maxThreshold;
-
-					try
-					{
-						minVoltage = Convert::ToSingle(sensorMinThreshold->Text);
-						maxVoltage = Convert::ToSingle(sensorMaxThreshold->Text);
-						//minThreshold = Convert::ToUInt16(sensorMinThreshold->Text);
-						//maxThreshold = Convert::ToUInt16(sensorMaxThreshold->Text);
-					}
-					catch (System::FormatException^)
-					{
-						MessageBox::Show("Os limites devem ser valores numéricos.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-						return;
-					}
-
-					minThreshold = getValueFromVoltage(minVoltage);
-					maxThreshold = getValueFromVoltage(maxVoltage);
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 7;
-					// Comando
-					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_CONTROL_CONFIG;
-					buffer[4] = sensorID;
-					buffer[5] = controlOperation->SelectedIndex;
-					tempByteArray = BitConverter::GetBytes(minThreshold);
-					buffer[6] = tempByteArray[0];
-					buffer[7] = tempByteArray[1];
-					tempByteArray = BitConverter::GetBytes(maxThreshold);
-					buffer[8] = tempByteArray[0];
-					buffer[9] = tempByteArray[1];
-
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
 				}
-				else
+
+				if (sensorID > 5)
 				{
-					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					MessageBox::Show("Sensor inválido.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
+				}
+
+				array<unsigned char>^ buffer = gcnew array<unsigned char>(6);
+				array<unsigned char>^ tempByteArray;
+				DateTime horaAtual = DateTime::Now;
+				float minVoltage, maxVoltage;
+				UInt16 minThreshold, maxThreshold;
+
+				try
+				{
+					minVoltage = Convert::ToSingle(sensorMinThreshold->Text);
+					maxVoltage = Convert::ToSingle(sensorMaxThreshold->Text);
+				}
+				catch (System::FormatException^)
+				{
+					MessageBox::Show("Os limites devem ser valores numéricos.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					return;
+				}
+
+				minThreshold = getValueFromVoltage(minVoltage);
+				maxThreshold = getValueFromVoltage(maxVoltage);
+
+				buffer[0] = sensorID;
+				buffer[1] = controlOperation->SelectedIndex;
+				tempByteArray = BitConverter::GetBytes(minThreshold);
+				buffer[2] = tempByteArray[0];
+				buffer[3] = tempByteArray[1];
+				tempByteArray = BitConverter::GetBytes(maxThreshold);
+				buffer[4] = tempByteArray[0];
+				buffer[5] = tempByteArray[1];
+
+				try
+				{
+					priorityDevice->SendPacket(ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_CONTROL_CONFIG, buffer);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 
@@ -2147,65 +2195,121 @@ namespace BaseProject
 			{
 				setSensorConfig(5, cmbxControl6Operation, txtMinThreshold6, txtMaxThreshold6);
 			}
+			System::Void btnAllSensorsUpdate_Click(System::Object^ sender, System::EventArgs^ e)
+			{
+				Module^ priorityDevice = getValidDevice();
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
+				{
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
+				}
+
+				array<ComboBox^>^ cmbxControlOperation = gcnew array<ComboBox^>(6)
+				{
+					cmbxControl1Operation,
+					cmbxControl2Operation,
+					cmbxControl3Operation,
+					cmbxControl4Operation,
+					cmbxControl5Operation,
+					cmbxControl6Operation
+				};
+
+				array<TextBox^>^ txtMinThreshold = gcnew array<TextBox^>(6)
+				{
+					txtMinThreshold1,
+					txtMinThreshold2,
+					txtMinThreshold3,
+					txtMinThreshold4,
+					txtMinThreshold5,
+					txtMinThreshold6
+				};
+
+				array<TextBox^>^ txtMaxThreshold = gcnew array<TextBox^>(6)
+				{
+					txtMaxThreshold1,
+					txtMaxThreshold2,
+					txtMaxThreshold3,
+					txtMaxThreshold4,
+					txtMaxThreshold5,
+					txtMaxThreshold6
+				};
+
+				array<unsigned char>^ buffer = gcnew array<unsigned char>(36);
+				array<unsigned char>^ tempByteArray;
+				float minVoltage, maxVoltage;
+				UInt16 minThreshold, maxThreshold;
+
+				for (int i = 0; i < 6; i++)
+				{
+					try
+					{
+						minVoltage = Convert::ToSingle(txtMinThreshold[i]->Text);
+						maxVoltage = Convert::ToSingle(txtMaxThreshold[i]->Text);
+					}
+					catch (System::FormatException^)
+					{
+						MessageBox::Show("Os limites devem ser valores numéricos.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+						return;
+					}
+
+					minThreshold = getValueFromVoltage(minVoltage);
+					maxThreshold = getValueFromVoltage(maxVoltage);
+
+					buffer[i * 6] = i;
+					buffer[i * 6 + 1] = cmbxControlOperation[i]->SelectedIndex;
+					tempByteArray = BitConverter::GetBytes(minThreshold);
+					buffer[i * 6 + 2] = tempByteArray[0];
+					buffer[i * 6 + 3] = tempByteArray[1];
+					tempByteArray = BitConverter::GetBytes(maxThreshold);
+					buffer[i * 6 + 4] = tempByteArray[0];
+					buffer[i * 6 + 5] = tempByteArray[1];
+				}
+
+				try
+				{
+					priorityDevice->SendPacket(ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_CONTROL_CONFIG, buffer);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+				}
+			}
+
 			System::Void btnSaveConfigs_Click(System::Object^ sender, System::EventArgs^ e) 
 			{
 				Module^ priorityDevice = getValidDevice();
-
-				if (priorityDevice != nullptr && priorityDevice->Connected)
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(4);
-					DateTime horaAtual = DateTime::Now;
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 1;
-					// Comando
-					buffer[3] = ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SAVE_CONFIG;
-
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
 				}
-				else
+
+				try
 				{
-					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					priorityDevice->SendPacket(ENDPOINT_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SAVE_CONFIG);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 
 			void setModuleInPowerDown(void)
 			{
 				Module^ priorityDevice = getValidDevice();
-
-				if (priorityDevice != nullptr && priorityDevice->Connected)
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(4);
-					DateTime horaAtual = DateTime::Now;
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 1;
-					// Comando
-					buffer[3] = BROAD_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_POWER_DOWN;
-
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
+					return;
 				}
-				else
+
+				try
 				{
-					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					priorityDevice->SendPacket(BROAD_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_POWER_DOWN);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 
@@ -2214,37 +2318,29 @@ namespace BaseProject
 				requestPowerDownVisualAnswer = true;
 				setModuleInPowerDown();
 			}
+
 			void setPowerDown(uint8_t val)
 			{
 				Module^ priorityDevice = getValidDevice();
-
-				if (priorityDevice != nullptr && priorityDevice->Connected)
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(5);
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 2;
-					// Comando
-					buffer[3] = ROUTER_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_TIMEOUT;
-					buffer[4] = val;
-
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
-				}
-				else
-				{
-					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					this->cbxHaltPowerDown->CheckedChanged -= gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
 					cbxHaltPowerDown->Checked = false;
 					this->cbxHaltPowerDown->CheckedChanged += gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
+					return;
+				}
+
+				array<unsigned char>^ buffer = gcnew array<unsigned char>(1);
+				buffer[0] = val;
+
+				try
+				{
+					priorityDevice->SendPacket(ROUTER_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_TIMEOUT, buffer);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 			System::Void cbxHaltPowerDown_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
@@ -2254,34 +2350,25 @@ namespace BaseProject
 			System::Void ckbxSendDataToServer_CheckedChanged(System::Object^ sender, System::EventArgs^ e) 
 			{
 				Module^ priorityDevice = getValidDevice();
-
-				if (priorityDevice != nullptr && priorityDevice->Connected)
+				if (priorityDevice == nullptr || !priorityDevice->Connected)
 				{
-					array<unsigned char>^ buffer = gcnew array<unsigned char>(5);
-
-					buffer[0] = 0xAA;
-					buffer[1] = 0x55;
-					// Tamanho do campo de dados
-					buffer[2] = 2;
-					// Comando
-					buffer[3] = ROUTER_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_SEND_TO_SERVER;
-					buffer[4] = (ckbxSendDataToServer->Checked) ? 1 : 0;
-
-					try
-					{
-						priorityDevice->Write(buffer, 0, buffer->Length);
-					}
-					catch (IOException^)
-					{
-						MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
-					}
-				}
-				else
-				{
-					MessageBox::Show("Sistema não conectado.", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
+					MessageBox::Show("Dispositivo não conectado.", "Aviso", MessageBoxButtons::OK, MessageBoxIcon::Information);
 					this->cbxHaltPowerDown->CheckedChanged -= gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
 					cbxHaltPowerDown->Checked = false;
 					this->cbxHaltPowerDown->CheckedChanged += gcnew System::EventHandler(this, &MainForm::cbxHaltPowerDown_CheckedChanged);
+					return;
+				}
+
+				array<unsigned char>^ buffer = gcnew array<unsigned char>(1);
+				buffer[0] = (ckbxSendDataToServer->Checked) ? 1 : 0;
+
+				try
+				{
+					priorityDevice->SendPacket(ROUTER_COMMAND | COMMAND_SOURCE_SOFTWARE | CMD_SET_SEND_TO_SERVER, buffer);
+				}
+				catch (IOException^)
+				{
+					MessageBox::Show("Mensagem não pôde ser enviada", "Erro", MessageBoxButtons::OK, MessageBoxIcon::Exclamation);
 				}
 			}
 };
